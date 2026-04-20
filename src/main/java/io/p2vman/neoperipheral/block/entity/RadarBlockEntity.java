@@ -11,11 +11,11 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-public class RadarBlockEntity extends BlockEntity implements IPrefSource, IPrefSource.IPrefHolder<RadarPeripheral> {
-    private RadarPeripheral radarPeripheral;
+public class RadarBlockEntity extends BasePeripheralBlockEntity implements IPrefSource.IPrefHolder<RadarPeripheral> {
+    private final RadarPeripheral peripheral;
     public RadarBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModRegistry.RADAR_BLOCK_ENTITY.get(), pos, blockState);
-        this.radarPeripheral = new RadarPeripheral(this, false);
+        this.peripheral = new RadarPeripheral(this, false);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class RadarBlockEntity extends BlockEntity implements IPrefSource, IPrefS
 
     @Override
     public RadarPeripheral getPref() {
-        return radarPeripheral;
+        return peripheral;
     }
 
     @Override
@@ -34,7 +34,8 @@ public class RadarBlockEntity extends BlockEntity implements IPrefSource, IPrefS
     }
 
     @Nullable
+    @Override
     public IPeripheral getPeripheral(@Nullable Direction direction) {
-        return radarPeripheral;
+        return peripheral;
     }
 }

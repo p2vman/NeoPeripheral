@@ -6,8 +6,10 @@ import io.p2vman.neoperipheral.block.RadarBlock;
 import io.p2vman.neoperipheral.block.entity.CreativeRadarBlockEntity;
 import io.p2vman.neoperipheral.block.entity.RadarBlockEntity;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -69,4 +71,14 @@ public class ModRegistry {
             )
     );
 
+
+    public static final Supplier<CreativeModeTab> TAB = CREATIVE_MODE_TABS.register("tab", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup." + Neoperipheral.MODID + ".tab"))
+            .icon(() -> new ItemStack(RADAR_BLOCK_ITEM.asItem()))
+            .displayItems((params, output) -> {
+                output.accept(RADAR_BLOCK_ITEM.get());
+                output.accept(CREATIVE_RADAR_BLOCK_ITEM.get());
+            })
+            .build()
+    );
 }

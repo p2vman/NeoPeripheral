@@ -1,5 +1,9 @@
 {
-  "itemGroup.neoperipheral": "Example Mod Tab",
-  "block.neoperipheral.example_block": "Example Block",
-  "item.neoperipheral.example_item": "Example Item"
+  "itemGroup.neoperipheral.tab": "NeoPeripherals",
+
+  "block.neoperipheral.radar_block": "Radar Block",
+  "item.neoperipheral.radar_block": "Radar Item",
+
+  "block.neoperipheral.creative_radar_block": "Creative Radar Block",
+  "item.neoperipheral.creative_radar_block": "Creative Radar Item"
 }

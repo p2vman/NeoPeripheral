@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "neoperipheral:block/creative_radar_block"
+    }
+  }
+}
