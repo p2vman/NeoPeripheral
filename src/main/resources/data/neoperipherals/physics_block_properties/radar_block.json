@@ -1,0 +1,8 @@
+{
+  "selector": "neoperipherals:radar_block",
+  "priority": 1001,
+
+  "properties": {
+    "sable:mass": 2.0
+  }
+}
