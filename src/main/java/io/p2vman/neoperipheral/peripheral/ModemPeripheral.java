@@ -5,9 +5,9 @@ import io.p2vman.neoperipheral.IPrefSource;
 import org.jetbrains.annotations.Nullable;
 
 public class ModemPeripheral extends BasePeripheral {
-    private final IPrefSource source;
-    public ModemPeripheral(final IPrefSource source) {
-        this.source = source;
+
+    public ModemPeripheral(IPrefSource source) {
+        super(source);
     }
 
     @Override

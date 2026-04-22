@@ -3,12 +3,16 @@ package io.p2vman.neoperipheral;
 import com.mojang.logging.LogUtils;
 import io.p2vman.neoperipheral.block.CreativeRadarBlock;
 import io.p2vman.neoperipheral.block.RadarBlock;
+import io.p2vman.neoperipheral.block.SocketBlock;
 import io.p2vman.neoperipheral.block.entity.CreativeRadarBlockEntity;
 import io.p2vman.neoperipheral.block.entity.RadarBlockEntity;
+import io.p2vman.neoperipheral.block.entity.SocketBlockEntity;
+import io.p2vman.neoperipheral.item.RadarModuleItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -37,36 +41,42 @@ public class ModRegistry {
     public static final DeferredBlock<CreativeRadarBlock> CREATIVE_RADAR_BLOCK =
             BLOCKS.register("creative_radar_block", () -> new CreativeRadarBlock(BlockBehaviour.Properties.of()));
 
+    public static final DeferredBlock<SocketBlock> SOCKET_BLOCK =
+            BLOCKS.register("socket_block", () -> new SocketBlock(BlockBehaviour.Properties.of()));
+
     public static final DeferredItem<BlockItem> RADAR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(RADAR_BLOCK);
 
     public static final DeferredItem<BlockItem> CREATIVE_RADAR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(CREATIVE_RADAR_BLOCK);
 
+    public static final DeferredItem<BlockItem> SOCKET_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(SOCKET_BLOCK);
+
+    public static final DeferredItem<RadarModuleItem> RADAR_MODULE_ITEM = ITEMS.registerItem("radar_module", RadarModuleItem::new, new Item.Properties().stacksTo(1));
+
+    public static final DeferredItem<RadarModuleItem> CREATIVE_RADAR_MODULE_ITEM = ITEMS.registerItem("creative_radar_module", RadarModuleItem::new, new Item.Properties().stacksTo(1));
+
     public static final Supplier<BlockEntityType<RadarBlockEntity>> RADAR_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
             "radar_block_entity",
-            // The block entity type.
             () -> new BlockEntityType<>(
-                    // The supplier to use for constructing the block entity instances.
                     RadarBlockEntity::new,
-                    // An optional value that, when true, only allows players with OP permissions
-                    // to load NBT data (e.g. placing a block item)
                     Set.of(RADAR_BLOCK.get()),
-                    // A vararg of blocks that can have this block entity.
-                    // This assumes the existence of the referenced blocks as DeferredBlock<Block>s.
                     null
             )
     );
 
     public static final Supplier<BlockEntityType<CreativeRadarBlockEntity>> CREATIVE_RADAR_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
             "creative_radar_block_entity",
-            // The block entity type.
             () -> new BlockEntityType<>(
-                    // The supplier to use for constructing the block entity instances.
                     CreativeRadarBlockEntity::new,
-                    // An optional value that, when true, only allows players with OP permissions
-                    // to load NBT data (e.g. placing a block item)
                     Set.of(CREATIVE_RADAR_BLOCK.get()),
-                    // A vararg of blocks that can have this block entity.
-                    // This assumes the existence of the referenced blocks as DeferredBlock<Block>s.
+                    null
+            )
+    );
+
+    public static final Supplier<BlockEntityType<SocketBlockEntity>> SOCKET_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "socket_block_entity",
+            () -> new BlockEntityType<>(
+                    SocketBlockEntity::new,
+                    Set.of(SOCKET_BLOCK.get()),
                     null
             )
     );
@@ -78,6 +88,8 @@ public class ModRegistry {
             .displayItems((params, output) -> {
                 output.accept(RADAR_BLOCK_ITEM.get());
                 output.accept(CREATIVE_RADAR_BLOCK_ITEM.get());
+                output.accept(SOCKET_BLOCK_ITEM.get());
+                output.accept(RADAR_MODULE_ITEM.get());
             })
             .build()
     );

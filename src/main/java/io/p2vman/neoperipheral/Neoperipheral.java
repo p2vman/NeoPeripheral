@@ -4,6 +4,10 @@ import com.mojang.logging.LogUtils;
 import dan200.computercraft.api.peripheral.PeripheralCapability;
 import io.p2vman.neoperipheral.block.entity.CreativeRadarBlockEntity;
 import io.p2vman.neoperipheral.block.entity.RadarBlockEntity;
+import io.p2vman.neoperipheral.block.entity.SocketBlockEntity;
+import io.p2vman.neoperipheral.peripheral.socket.ModuleLookup;
+import io.p2vman.neoperipheral.peripheral.socket.modules.CreativeRadarModule;
+import io.p2vman.neoperipheral.peripheral.socket.modules.RadarModule;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -31,5 +35,9 @@ public class Neoperipheral {
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(PeripheralCapability.get(), ModRegistry.RADAR_BLOCK_ENTITY.get(), RadarBlockEntity::getPeripheral);
         event.registerBlockEntity(PeripheralCapability.get(), ModRegistry.CREATIVE_RADAR_BLOCK_ENTITY.get(), CreativeRadarBlockEntity::getPeripheral);
+        event.registerBlockEntity(PeripheralCapability.get(), ModRegistry.SOCKET_BLOCK_ENTITY.get(), SocketBlockEntity::getPeripheral);
+
+        ModuleLookup.register(ModRegistry.RADAR_MODULE_ITEM.get(), RadarModule::new);
+        ModuleLookup.register(ModRegistry.CREATIVE_RADAR_MODULE_ITEM.get(), CreativeRadarModule::new);
     }
 }

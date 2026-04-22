@@ -1,6 +1,5 @@
 package io.p2vman.neoperipheral.block;
 
-import io.p2vman.neoperipheral.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;

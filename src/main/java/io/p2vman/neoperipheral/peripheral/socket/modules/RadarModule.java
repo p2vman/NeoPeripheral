@@ -1,39 +1,71 @@
-package io.p2vman.neoperipheral.peripheral;
+package io.p2vman.neoperipheral.peripheral.socket.modules;
 
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.lua.MethodResult;
-import dan200.computercraft.api.peripheral.IPeripheral;
 import dev.ryanhcode.sable.Sable;
 import dev.ryanhcode.sable.companion.math.BoundingBox3d;
 import dev.ryanhcode.sable.sublevel.ServerSubLevel;
 import io.p2vman.neoperipheral.Config;
-import io.p2vman.neoperipheral.IPrefSource;
 import io.p2vman.neoperipheral.lua.Table;
 import io.p2vman.neoperipheral.lua.TableArray;
-import org.jetbrains.annotations.Nullable;
+import io.p2vman.neoperipheral.peripheral.SocketPeripheral;
+import io.p2vman.neoperipheral.peripheral.socket.Module;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
 
-public class RadarPeripheral extends BasePeripheral {
+public class RadarModule implements Module {
     private final boolean creative;
-    public RadarPeripheral(IPrefSource source, boolean creative) {
-        super(source);
+    private final SocketPeripheral peripheral;
+
+    public RadarModule(ItemStack itemStack, SocketPeripheral peripheral) {
+        this(itemStack, peripheral, false);
+    }
+    public RadarModule(ItemStack itemStack, SocketPeripheral peripheral, boolean creative) {
         this.creative = creative;
+        this.peripheral = peripheral;
     }
 
     @Override
-    public String getType() {
-        return "neo_radar";
+    public void onConnect() {
+
     }
 
     @Override
-    public boolean equals(@Nullable IPeripheral iPeripheral) {
-        return iPeripheral == this;
+    public void onDisconnect() {
+
+    }
+
+    @Override
+    public void onSave(CompoundTag tag, HolderLookup.Provider provider) {
+
+    }
+
+    @Override
+    public void onLoad(CompoundTag tag, HolderLookup.Provider provider) {
+
+    }
+
+    @Override
+    public void onModuleConnect(Module module, int slot) {
+
+    }
+
+    @Override
+    public void onModuleDisconnect(Module module, int slot) {
+
     }
 
     @LuaFunction(value = {"isCreative", "creative"})
     public MethodResult isCreative() throws LuaException {
         return MethodResult.of(creative);
+    }
+
+    @Override
+    public String getType() {
+        return "neo_radar";
     }
 
     @LuaFunction(value = {"scanForSubLevels", "ScanForSubLevels"}, mainThread = true)
@@ -44,8 +76,9 @@ public class RadarPeripheral extends BasePeripheral {
 
         var absolute = arguments.optBoolean(1, false) && creative;
 
-        var _pos = Sable.HELPER.projectOutOfSubLevel(this.source.getLevel(), this.source.getPos().getCenter());
-        var it = Sable.HELPER.getAllIntersecting(this.source.getLevel(), new BoundingBox3d(_pos.x - radius, _pos.y - radius, _pos.z - radius, _pos.x + radius, _pos.y + radius, _pos.z + radius)).iterator();
+        var source = this.peripheral.getSource();
+        var _pos = Sable.HELPER.projectOutOfSubLevel(source.getLevel(), source.getPos().getCenter());
+        var it = Sable.HELPER.getAllIntersecting(source.getLevel(), new BoundingBox3d(_pos.x - radius, _pos.y - radius, _pos.z - radius, _pos.x + radius, _pos.y + radius, _pos.z + radius)).iterator();
         while (it.hasNext()) {
             var subLevel = (ServerSubLevel) it.next();
             var sub = new Table();
@@ -77,6 +110,4 @@ public class RadarPeripheral extends BasePeripheral {
 
         return MethodResult.of(sub_levels);
     }
-
-
 }
