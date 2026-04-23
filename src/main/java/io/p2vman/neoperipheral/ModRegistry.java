@@ -90,6 +90,7 @@ public class ModRegistry {
                 output.accept(CREATIVE_RADAR_BLOCK_ITEM.get());
                 output.accept(SOCKET_BLOCK_ITEM.get());
                 output.accept(RADAR_MODULE_ITEM.get());
+                output.accept(CREATIVE_RADAR_MODULE_ITEM.get());
             })
             .build()
     );

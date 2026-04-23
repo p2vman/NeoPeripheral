@@ -39,13 +39,11 @@ public class SocketBlock extends Block implements EntityBlock {
         int slot = pickSlot(pos, hitResult);
 
         if (player.isCrouching()) {
-            // Clear slot.
             ItemStack removed = socketBe.removeModuleItem(slot);
             if (!removed.isEmpty()) {
                 if (!player.addItem(removed)) player.drop(removed, false);
             }
         } else {
-            // Extract into inventory (or main hand if empty).
             ItemStack removed = socketBe.removeModuleItem(slot);
             if (!removed.isEmpty()) {
                 if (player.getMainHandItem().isEmpty()) {
@@ -56,7 +54,6 @@ public class SocketBlock extends Block implements EntityBlock {
             }
         }
 
-        // Push BE update to client so the renderer can reflect the new state.
         level.sendBlockUpdated(pos, state, state, 3);
         return InteractionResult.CONSUME;
     }

@@ -11,12 +11,14 @@ import io.p2vman.neoperipheral.Config;
 import io.p2vman.neoperipheral.lua.Table;
 import io.p2vman.neoperipheral.lua.TableArray;
 import io.p2vman.neoperipheral.peripheral.SocketPeripheral;
+import io.p2vman.neoperipheral.peripheral.socket.AbstractModule;
 import io.p2vman.neoperipheral.peripheral.socket.Module;
+import io.p2vman.neoperipheral.peripheral.socket.ModuleExtensions;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 
-public class RadarModule implements Module {
+public class RadarModule extends AbstractModule {
     private final boolean creative;
     private final SocketPeripheral peripheral;
 
@@ -60,6 +62,7 @@ public class RadarModule implements Module {
 
     @LuaFunction(value = {"isCreative", "creative"})
     public MethodResult isCreative() throws LuaException {
+        ModuleExtensions.checkModuleEnabled(this);
         return MethodResult.of(creative);
     }
 
@@ -70,6 +73,7 @@ public class RadarModule implements Module {
 
     @LuaFunction(value = {"scanForSubLevels", "ScanForSubLevels"}, mainThread = true)
     public MethodResult scanForSubLevels(IArguments arguments) throws LuaException {
+        ModuleExtensions.checkModuleEnabled(this);
         var radius = this.creative ? arguments.optInt(0, 16) : Math.max(16, Math.min(Config._RADAR_RANGE_LIMIT, arguments.optInt(0, 1024)));
         var sub_levels = new TableArray();
         var increment = 0;

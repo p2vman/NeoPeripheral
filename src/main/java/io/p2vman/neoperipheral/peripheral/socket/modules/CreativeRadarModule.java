@@ -6,6 +6,6 @@ import net.minecraft.world.item.ItemStack;
 
 public class CreativeRadarModule extends RadarModule {
     public CreativeRadarModule(ItemStack itemStack, SocketPeripheral peripheral) {
-        super(itemStack, peripheral);
+        super(itemStack, peripheral, true);
     }
 }
