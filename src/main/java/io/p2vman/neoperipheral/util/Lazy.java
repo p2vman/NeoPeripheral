@@ -74,4 +74,22 @@ public class Lazy<T>
             return value;
         }
     }
+
+    public T orElseGet(Supplier<T> elseSupplier) {
+        synchronized (lock) {
+            if (!initialized)
+                return elseSupplier.get();
+
+            return value;
+        }
+    }
+
+    public T orElseThrow() {
+        synchronized (lock) {
+            if (!initialized)
+                throw new NullPointerException();
+
+            return value;
+        }
+    }
 }

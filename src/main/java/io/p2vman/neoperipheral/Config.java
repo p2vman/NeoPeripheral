@@ -12,12 +12,15 @@ public class Config {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     private static final ModConfigSpec.IntValue RADAR_RANGE_LIMIT = BUILDER.defineInRange("radar_range_limit", 2048, 16, Integer.MAX_VALUE);
+    private static final ModConfigSpec.IntValue RADAR_DEFAULT_RANGE = BUILDER.defineInRange("radar_default_range", 1024, 16, Integer.MAX_VALUE);
 
     static final ModConfigSpec SPEC = BUILDER.build();
 
     public static int _RADAR_RANGE_LIMIT;
+    public static int _RADAR_DEFAULT_RANGE;
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
         _RADAR_RANGE_LIMIT = RADAR_RANGE_LIMIT.get();
+        _RADAR_DEFAULT_RANGE = RADAR_DEFAULT_RANGE.get();
     }
 }

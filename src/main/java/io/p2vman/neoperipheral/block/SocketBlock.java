@@ -110,7 +110,7 @@ public class SocketBlock extends Block implements EntityBlock {
 
     @Override
     protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
-        return List.of(new ItemStack(ModRegistry.SOCKET_BLOCK.get()));
+        return List.of(new ItemStack(this));
     }
 
     @Override

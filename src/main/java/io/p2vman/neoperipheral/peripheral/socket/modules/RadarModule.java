@@ -74,7 +74,7 @@ public class RadarModule extends AbstractModule {
     @LuaFunction(value = {"scanForSubLevels", "ScanForSubLevels"}, mainThread = true)
     public MethodResult scanForSubLevels(IArguments arguments) throws LuaException {
         ModuleExtensions.checkModuleEnabled(this);
-        var radius = this.creative ? arguments.optInt(0, 16) : Math.max(16, Math.min(Config._RADAR_RANGE_LIMIT, arguments.optInt(0, 1024)));
+        var radius = this.creative ? arguments.optInt(0, 16) : Math.max(16, Math.min(Config._RADAR_RANGE_LIMIT, arguments.optInt(0, Config._RADAR_DEFAULT_RANGE)));
         var sub_levels = new TableArray();
         var increment = 0;
 

@@ -129,8 +129,6 @@ dependencies {
     implementation "curse.maven:cc-tweaked-282001:5714512"
     implementation "curse.maven:sable-1312371:7948753"
 
-
-
     fileTree(dir: 'libs', include: ['*.jar']).each { File f ->
         def base = f.name.replaceAll(/.jar$/, '')
         def idx = base.lastIndexOf('-')

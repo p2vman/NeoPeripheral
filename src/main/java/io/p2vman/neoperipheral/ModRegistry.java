@@ -1,11 +1,15 @@
 package io.p2vman.neoperipheral;
 
 import com.mojang.logging.LogUtils;
+import dan200.computercraft.api.peripheral.PeripheralCapability;
 import io.p2vman.neoperipheral.block.*;
-import io.p2vman.neoperipheral.block.entity.CreativeRadarBlockEntity;
-import io.p2vman.neoperipheral.block.entity.RadarBlockEntity;
-import io.p2vman.neoperipheral.block.entity.SocketBlockEntity;
-import io.p2vman.neoperipheral.item.RadarModuleItem;
+import io.p2vman.neoperipheral.block.entity.*;
+import io.p2vman.neoperipheral.item.ModuleItem;
+import io.p2vman.neoperipheral.item.NfcCardItem;
+import io.p2vman.neoperipheral.peripheral.socket.ModuleLookup;
+import io.p2vman.neoperipheral.peripheral.socket.modules.CreativeRadarModule;
+import io.p2vman.neoperipheral.peripheral.socket.modules.CryptoModule;
+import io.p2vman.neoperipheral.peripheral.socket.modules.RadarModule;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
@@ -14,6 +18,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -40,13 +45,13 @@ public class ModRegistry {
             BLOCKS.register("creative_radar_block", () -> new CreativeRadarBlock(BlockBehaviour.Properties.of()));
 
     public static final DeferredBlock<SocketBlock> SOCKET_BLOCK =
-            BLOCKS.register("socket_block", () -> new SocketBlock(BlockBehaviour.Properties.of()));
+            BLOCKS.register("socket", () -> new SocketBlock(BlockBehaviour.Properties.of()));
 
     public static final DeferredBlock<CryptoBlock> CRYPTO_BLOCK =
-            BLOCKS.register("crypto_block", () -> new CryptoBlock(BlockBehaviour.Properties.of()));
+            BLOCKS.register("crypto", () -> new CryptoBlock(BlockBehaviour.Properties.of()));
 
     public static final DeferredBlock<NfcMasterBlock> NFC_MASTER_BLOCK =
-            BLOCKS.register("nfc_master_block", () -> new NfcMasterBlock(BlockBehaviour.Properties.of()));
+            BLOCKS.register("nfc_master", () -> new NfcMasterBlock(BlockBehaviour.Properties.of()));
 
     public static final DeferredBlock<NfcReaderBlock> NFC_READER_BLOCK =
             BLOCKS.register("nfc_reader", () -> new NfcReaderBlock(BlockBehaviour.Properties.of()));
@@ -63,9 +68,17 @@ public class ModRegistry {
 
     public static final DeferredItem<BlockItem> NFC_READER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(NFC_READER_BLOCK);
 
-    public static final DeferredItem<RadarModuleItem> RADAR_MODULE_ITEM = ITEMS.registerItem("radar_module", RadarModuleItem::new, new Item.Properties().stacksTo(1));
+    public static final DeferredItem<ModuleItem> RADAR_MODULE_ITEM =
+            ITEMS.registerItem("radar_module", ModuleItem::new, new Item.Properties().stacksTo(1));
 
-    public static final DeferredItem<RadarModuleItem> CREATIVE_RADAR_MODULE_ITEM = ITEMS.registerItem("creative_radar_module", RadarModuleItem::new, new Item.Properties().stacksTo(1));
+    public static final DeferredItem<ModuleItem> CREATIVE_RADAR_MODULE_ITEM =
+            ITEMS.registerItem("creative_radar_module", ModuleItem::new, new Item.Properties().stacksTo(1));
+
+    public static final DeferredItem<ModuleItem> CRYPTO_MODULE_ITEM =
+            ITEMS.registerItem("crypto_module", ModuleItem::new, new Item.Properties().stacksTo(1));
+
+    public static final DeferredItem<NfcCardItem> NFC_CARD_ITEM =
+            ITEMS.registerItem("nfc_card", NfcCardItem::new, new Item.Properties().stacksTo(1));
 
     public static final Supplier<BlockEntityType<RadarBlockEntity>> RADAR_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
             "radar_block_entity",
@@ -86,7 +99,7 @@ public class ModRegistry {
     );
 
     public static final Supplier<BlockEntityType<SocketBlockEntity>> SOCKET_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
-            "socket_block_entity",
+            "socket",
             () -> new BlockEntityType<>(
                     SocketBlockEntity::new,
                     Set.of(SOCKET_BLOCK.get()),
@@ -94,6 +107,32 @@ public class ModRegistry {
             )
     );
 
+    public static final Supplier<BlockEntityType<NfcMasterBlockEntity>> NFC_MASTER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "nfc_master",
+            () -> new BlockEntityType<>(
+                    NfcMasterBlockEntity::new,
+                    Set.of(NFC_MASTER_BLOCK.get()),
+                    null
+            )
+    );
+
+    public static final Supplier<BlockEntityType<NfcReaderBlockEntity>> NFC_READER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "nfc_reader",
+            () -> new BlockEntityType<>(
+                    NfcReaderBlockEntity::new,
+                    Set.of(NFC_READER_BLOCK.get()),
+                    null
+            )
+    );
+
+    public static final Supplier<BlockEntityType<CryptoBlockEntity>> CRYPTO_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "crypto",
+            () -> new BlockEntityType<>(
+                    CryptoBlockEntity::new,
+                    Set.of(CRYPTO_BLOCK.get()),
+                    null
+            )
+    );
 
     public static final Supplier<CreativeModeTab> TAB = CREATIVE_MODE_TABS.register("tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup." + Neoperipheral.MODID + ".tab"))
@@ -107,7 +146,24 @@ public class ModRegistry {
                 output.accept(NFC_MASTER_BLOCK_ITEM.get());
                 output.accept(NFC_READER_BLOCK_ITEM.get());
                 output.accept(CRYPTO_BLOCK_ITEM.get());
+                output.accept(NFC_CARD_ITEM.get());
+                output.accept(CRYPTO_MODULE_ITEM.get());
             })
             .build()
     );
+
+    public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(PeripheralCapability.get(), RADAR_BLOCK_ENTITY.get(), RadarBlockEntity::getPeripheral);
+        event.registerBlockEntity(PeripheralCapability.get(), CREATIVE_RADAR_BLOCK_ENTITY.get(), CreativeRadarBlockEntity::getPeripheral);
+        event.registerBlockEntity(PeripheralCapability.get(), SOCKET_BLOCK_ENTITY.get(), SocketBlockEntity::getPeripheral);
+        event.registerBlockEntity(PeripheralCapability.get(), NFC_MASTER_BLOCK_ENTITY.get(), NfcMasterBlockEntity::getPeripheral);
+        event.registerBlockEntity(PeripheralCapability.get(), NFC_READER_BLOCK_ENTITY.get(), NfcReaderBlockEntity::getPeripheral);
+        event.registerBlockEntity(PeripheralCapability.get(), CRYPTO_BLOCK_ENTITY.get(), CryptoBlockEntity::getPeripheral);
+
+        ModuleLookup.register(RADAR_MODULE_ITEM.get(), RadarModule::new);
+        ModuleLookup.register(CREATIVE_RADAR_MODULE_ITEM.get(), CreativeRadarModule::new);
+        ModuleLookup.register(CRYPTO_MODULE_ITEM.get(), CryptoModule::new);
+    }
+
+
 }

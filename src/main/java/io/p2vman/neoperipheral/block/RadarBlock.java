@@ -26,6 +26,6 @@ public class RadarBlock extends Block implements EntityBlock {
 
     @Override
     protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
-        return List.of(new ItemStack(ModRegistry.RADAR_BLOCK.get()));
+        return List.of(new ItemStack(this));
     }
 }

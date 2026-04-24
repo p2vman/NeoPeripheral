@@ -23,6 +23,6 @@ public class ModemBlock extends Block implements EntityBlock {
 
     @Override
     protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
-        return List.of();
+        return List.of(new ItemStack(this));
     }
 }

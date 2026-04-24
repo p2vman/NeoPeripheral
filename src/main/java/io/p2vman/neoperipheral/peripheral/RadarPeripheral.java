@@ -4,7 +4,6 @@ import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.lua.MethodResult;
-import dan200.computercraft.api.peripheral.IPeripheral;
 import dev.ryanhcode.sable.Sable;
 import dev.ryanhcode.sable.companion.math.BoundingBox3d;
 import dev.ryanhcode.sable.sublevel.ServerSubLevel;
@@ -12,7 +11,6 @@ import io.p2vman.neoperipheral.Config;
 import io.p2vman.neoperipheral.IPrefSource;
 import io.p2vman.neoperipheral.lua.Table;
 import io.p2vman.neoperipheral.lua.TableArray;
-import org.jetbrains.annotations.Nullable;
 
 public class RadarPeripheral extends BasePeripheral {
     private final boolean creative;
@@ -26,11 +24,6 @@ public class RadarPeripheral extends BasePeripheral {
         return "neo_radar";
     }
 
-    @Override
-    public boolean equals(@Nullable IPeripheral iPeripheral) {
-        return iPeripheral == this;
-    }
-
     @LuaFunction(value = {"isCreative", "creative"})
     public MethodResult isCreative() throws LuaException {
         return MethodResult.of(creative);
@@ -38,7 +31,7 @@ public class RadarPeripheral extends BasePeripheral {
 
     @LuaFunction(value = {"scanForSubLevels", "ScanForSubLevels"}, mainThread = true)
     public MethodResult scanForSubLevels(IArguments arguments) throws LuaException {
-        var radius = this.creative ? arguments.optInt(0, 16) : Math.max(16, Math.min(Config._RADAR_RANGE_LIMIT, arguments.optInt(0, 1024)));
+        var radius = this.creative ? arguments.optInt(0, 16) : Math.max(16, Math.min(Config._RADAR_RANGE_LIMIT, arguments.optInt(0, Config._RADAR_DEFAULT_RANGE)));
         var sub_levels = new TableArray();
         var increment = 0;
 

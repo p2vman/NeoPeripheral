@@ -5,7 +5,7 @@
 
   "block.neoperipheral.creative_radar_block": "Creative Radar Block",
 
-  "block.neoperipheral.socket_block": "Socket Block",
+  "block.neoperipheral.socket": "Socket Block",
 
   "item.neoperipheral.radar_module": "Radar Module"
 }

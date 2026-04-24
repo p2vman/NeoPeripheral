@@ -22,6 +22,6 @@ public class CreativeRadarBlock extends RadarBlock {
 
     @Override
     protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
-        return List.of(new ItemStack(ModRegistry.CREATIVE_RADAR_BLOCK.get()));
+        return List.of(new ItemStack(this));
     }
 }

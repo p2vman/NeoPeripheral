@@ -2,13 +2,11 @@ package io.p2vman.neoperipheral.peripheral;
 
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.lua.MethodResult;
-import dan200.computercraft.api.peripheral.IPeripheral;
 import io.p2vman.neoperipheral.IPrefSource;
 import io.p2vman.neoperipheral.item.ModuleItem;
 import io.p2vman.neoperipheral.peripheral.socket.Module;
 import io.p2vman.neoperipheral.peripheral.socket.ModuleLookup;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
@@ -20,12 +18,7 @@ public class SocketPeripheral extends BasePeripheral {
 
     @Override
     public String getType() {
-        return "socket";
-    }
-
-    @Override
-    public boolean equals(@Nullable IPeripheral iPeripheral) {
-        return false;
+        return "neo_socket";
     }
 
     public void addModuleItem(int slot, ItemStack stack) {

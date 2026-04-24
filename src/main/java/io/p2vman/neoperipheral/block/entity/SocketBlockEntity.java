@@ -42,7 +42,7 @@ public class SocketBlockEntity extends BasePeripheralBlockEntity implements IPre
 
     @Override
     public BlockPos getPos() {
-        return getBlockPos();
+        return worldPosition;
     }
 
     @Override
