@@ -1,9 +1,7 @@
 package io.p2vman.neoperipheral;
 
 import com.mojang.logging.LogUtils;
-import io.p2vman.neoperipheral.block.CreativeRadarBlock;
-import io.p2vman.neoperipheral.block.RadarBlock;
-import io.p2vman.neoperipheral.block.SocketBlock;
+import io.p2vman.neoperipheral.block.*;
 import io.p2vman.neoperipheral.block.entity.CreativeRadarBlockEntity;
 import io.p2vman.neoperipheral.block.entity.RadarBlockEntity;
 import io.p2vman.neoperipheral.block.entity.SocketBlockEntity;
@@ -44,11 +42,26 @@ public class ModRegistry {
     public static final DeferredBlock<SocketBlock> SOCKET_BLOCK =
             BLOCKS.register("socket_block", () -> new SocketBlock(BlockBehaviour.Properties.of()));
 
+    public static final DeferredBlock<CryptoBlock> CRYPTO_BLOCK =
+            BLOCKS.register("crypto_block", () -> new CryptoBlock(BlockBehaviour.Properties.of()));
+
+    public static final DeferredBlock<NfcMasterBlock> NFC_MASTER_BLOCK =
+            BLOCKS.register("nfc_master_block", () -> new NfcMasterBlock(BlockBehaviour.Properties.of()));
+
+    public static final DeferredBlock<NfcReaderBlock> NFC_READER_BLOCK =
+            BLOCKS.register("nfc_reader", () -> new NfcReaderBlock(BlockBehaviour.Properties.of()));
+
     public static final DeferredItem<BlockItem> RADAR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(RADAR_BLOCK);
 
     public static final DeferredItem<BlockItem> CREATIVE_RADAR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(CREATIVE_RADAR_BLOCK);
 
     public static final DeferredItem<BlockItem> SOCKET_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(SOCKET_BLOCK);
+
+    public static final DeferredItem<BlockItem> CRYPTO_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(CRYPTO_BLOCK);
+
+    public static final DeferredItem<BlockItem> NFC_MASTER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(NFC_MASTER_BLOCK);
+
+    public static final DeferredItem<BlockItem> NFC_READER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(NFC_READER_BLOCK);
 
     public static final DeferredItem<RadarModuleItem> RADAR_MODULE_ITEM = ITEMS.registerItem("radar_module", RadarModuleItem::new, new Item.Properties().stacksTo(1));
 
@@ -91,6 +104,9 @@ public class ModRegistry {
                 output.accept(SOCKET_BLOCK_ITEM.get());
                 output.accept(RADAR_MODULE_ITEM.get());
                 output.accept(CREATIVE_RADAR_MODULE_ITEM.get());
+                output.accept(NFC_MASTER_BLOCK_ITEM.get());
+                output.accept(NFC_READER_BLOCK_ITEM.get());
+                output.accept(CRYPTO_BLOCK_ITEM.get());
             })
             .build()
     );

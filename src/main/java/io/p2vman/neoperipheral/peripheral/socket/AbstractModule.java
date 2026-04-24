@@ -3,6 +3,16 @@ package io.p2vman.neoperipheral.peripheral.socket;
 public abstract class AbstractModule implements Module {
     protected boolean enabled = false;
 
+    @Override
+    public void onConnect() {
+        enabled = true;
+    }
+
+    @Override
+    public void onDisconnect() {
+        enabled = false;
+    }
+
     public boolean isEnabled() {
         return enabled;
     }

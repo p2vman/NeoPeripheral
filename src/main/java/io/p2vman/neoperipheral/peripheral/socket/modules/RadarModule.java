@@ -32,12 +32,12 @@ public class RadarModule extends AbstractModule {
 
     @Override
     public void onConnect() {
-
+        super.onConnect();
     }
 
     @Override
     public void onDisconnect() {
-
+        super.onDisconnect();
     }
 
     @Override
