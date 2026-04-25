@@ -9,6 +9,9 @@ public interface IPrefSource {
     BlockPos getPos();
     Level getLevel();
     BlockEntity getBlockEntity();
+    void setLabel(String label);
+    String getLabel();
+    boolean hasLabel();
 
     interface IPrefHolder<T extends IPeripheral> {
         T getPref();

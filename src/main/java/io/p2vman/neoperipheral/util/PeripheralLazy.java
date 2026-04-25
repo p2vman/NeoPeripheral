@@ -54,6 +54,13 @@ public class PeripheralLazy<T extends IPeripheral> {
         }
     }
 
+    public @Nullable T get()
+    {
+        synchronized (lock) {
+            return value;
+        }
+    }
+
     public void ifPresent(final Consumer<T> consumer) {
         synchronized (lock) {
             if (!initialized)

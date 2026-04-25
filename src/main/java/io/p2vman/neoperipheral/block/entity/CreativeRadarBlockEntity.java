@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-public class CreativeRadarBlockEntity extends BlockEntity implements IPrefSource, IPrefSource.IPrefHolder<RadarPeripheral> {
+public class CreativeRadarBlockEntity extends BasePeripheralBlockEntity implements IPrefSource, IPrefSource.IPrefHolder<RadarPeripheral> {
     private Lazy<RadarPeripheral> radarPeripheral;
     public CreativeRadarBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModRegistry.CREATIVE_RADAR_BLOCK_ENTITY.get(), pos, blockState);
