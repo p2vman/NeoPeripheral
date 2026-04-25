@@ -1,11 +1,13 @@
 {
   "itemGroup.neoperipheral.tab": "NeoPeripherals",
 
-  "block.neoperipheral.radar_block": "Radar Block",
+  "block.neoperipheral.radar_block": "Radar peripheral",
+  "block.neoperipheral.creative_radar_block": "Creative Radar peripheral",
+  "block.neoperipheral.socket": "Socket peripheral",
+  "block.neoperipheral.nfc_master": "Nfc master peripheral",
+  "block.neoperipheral.nfc_reader": "Nfc reader peripheral",
+  "block.neoperipheral.crypto": "Crypto peripheral",
 
-  "block.neoperipheral.creative_radar_block": "Creative Radar Block",
-
-  "block.neoperipheral.socket": "Socket Block",
-
-  "item.neoperipheral.radar_module": "Radar Module"
+  "item.neoperipheral.radar_module": "Radar Module",
+  "item.neoperipheral.nfc_card": "Nfc card"
 }

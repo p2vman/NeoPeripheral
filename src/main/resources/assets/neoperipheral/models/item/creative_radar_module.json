@@ -1,0 +1,8 @@
+{
+  "parent": "neoperipheral:item/radar_module",
+  "textures": {
+    "0": "neoperipheral:item/creative_radar_module",
+    "particle": "neoperipheral:item/creative_radar_module"
+  }
+}
+

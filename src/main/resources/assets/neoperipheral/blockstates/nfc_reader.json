@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "neoperipheral:block/nfc_reader" },
+    "facing=south": { "model": "neoperipheral:block/nfc_reader", "y": 180 },
+    "facing=west":  { "model": "neoperipheral:block/nfc_reader", "y": 270 },
+    "facing=east":  { "model": "neoperipheral:block/nfc_reader", "y": 90 }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "neoperipheral:block/nfc_master",
+  "textures": {
+    "2": "neoperipheral:block/nfc_master_on",
+    "particle": "neoperipheral:block/nfc_master_on"
+  }
+}
+

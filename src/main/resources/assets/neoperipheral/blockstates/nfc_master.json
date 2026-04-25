@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "facing=north,has_card=false": { "model": "neoperipheral:block/nfc_master" },
+    "facing=south,has_card=false": { "model": "neoperipheral:block/nfc_master", "y": 180 },
+    "facing=west,has_card=false":  { "model": "neoperipheral:block/nfc_master", "y": 270 },
+    "facing=east,has_card=false":  { "model": "neoperipheral:block/nfc_master", "y": 90 },
+
+    "facing=north,has_card=true": { "model": "neoperipheral:block/nfc_master_card" },
+    "facing=south,has_card=true": { "model": "neoperipheral:block/nfc_master_card", "y": 180 },
+    "facing=west,has_card=true":  { "model": "neoperipheral:block/nfc_master_card", "y": 270 },
+    "facing=east,has_card=true":  { "model": "neoperipheral:block/nfc_master_card", "y": 90 }
+  }
+}

@@ -10,6 +10,8 @@ import io.p2vman.neoperipheral.peripheral.socket.ModuleLookup;
 import io.p2vman.neoperipheral.peripheral.socket.modules.CreativeRadarModule;
 import io.p2vman.neoperipheral.peripheral.socket.modules.CryptoModule;
 import io.p2vman.neoperipheral.peripheral.socket.modules.RadarModule;
+import io.p2vman.neoperipheral.util.ItemsDeferredRegister;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
@@ -31,8 +33,8 @@ public class ModRegistry {
     private static final Logger LOGGER = LogUtils.getLogger();
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(Neoperipheral.MODID);
-    public static final DeferredRegister.Items ITEMS =
-            DeferredRegister.createItems(Neoperipheral.MODID);
+    public static final ItemsDeferredRegister ITEMS =
+            ItemsDeferredRegister.create(Neoperipheral.MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Neoperipheral.MODID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES =
@@ -60,13 +62,18 @@ public class ModRegistry {
 
     public static final DeferredItem<BlockItem> CREATIVE_RADAR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(CREATIVE_RADAR_BLOCK);
 
-    public static final DeferredItem<BlockItem> SOCKET_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(SOCKET_BLOCK);
-
-    public static final DeferredItem<BlockItem> CRYPTO_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(CRYPTO_BLOCK);
-
-    public static final DeferredItem<BlockItem> NFC_MASTER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(NFC_MASTER_BLOCK);
-
-    public static final DeferredItem<BlockItem> NFC_READER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(NFC_READER_BLOCK);
+    public static final DeferredItem<BlockItem> SOCKET_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(SOCKET_BLOCK, ((stack, context, components, flag) -> {
+        components.add(Component.literal("WIP").withStyle(ChatFormatting.YELLOW));
+    }));
+    public static final DeferredItem<BlockItem> CRYPTO_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(CRYPTO_BLOCK, ((stack, context, components, flag) -> {
+        components.add(Component.literal("WIP").withStyle(ChatFormatting.YELLOW));
+    }));
+    public static final DeferredItem<BlockItem> NFC_MASTER_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(NFC_MASTER_BLOCK, ((stack, context, components, flag) -> {
+        components.add(Component.literal("WIP").withStyle(ChatFormatting.YELLOW));
+    }));
+    public static final DeferredItem<BlockItem> NFC_READER_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(NFC_READER_BLOCK, ((stack, context, components, flag) -> {
+        components.add(Component.literal("WIP").withStyle(ChatFormatting.YELLOW));
+    }));
 
     public static final DeferredItem<ModuleItem> RADAR_MODULE_ITEM =
             ITEMS.registerItem("radar_module", ModuleItem::new, new Item.Properties().stacksTo(1));

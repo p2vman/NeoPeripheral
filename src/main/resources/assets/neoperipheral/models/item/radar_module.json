@@ -3,8 +3,8 @@
   "credit": "Made with Blockbench",
   "texture_size": [32, 32],
   "textures": {
-    "0": "neoperipheral:block/module_item",
-    "particle": "neoperipheral:block/module_item"
+    "0": "neoperipheral:item/module_item",
+    "particle": "neoperipheral:item/module_item"
   },
   "elements": [
     {
