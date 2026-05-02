@@ -1,5 +1,4 @@
 package io.p2vman.neoperipheral.peripheral.socket.modules;
-
 import io.p2vman.neoperipheral.peripheral.SocketPeripheral;
 import io.p2vman.neoperipheral.peripheral.socket.AbstractModule;
 import io.p2vman.neoperipheral.peripheral.socket.Module;

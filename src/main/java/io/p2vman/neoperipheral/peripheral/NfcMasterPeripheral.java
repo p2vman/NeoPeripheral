@@ -110,10 +110,10 @@ public class NfcMasterPeripheral extends BasePeripheral implements IPeripheralAt
                     }
 
                     if (data == null) {
-                        card.set(ModComponents.NFC_DATA, new NfcCardComponent(0, out));
+                        card.set(ModComponents.NFC_DATA, new NfcCardComponent(0, out, 10));
                         return true;
                     }
-                    card.set(ModComponents.NFC_DATA, new NfcCardComponent(data.b4pin(), out));
+                    card.set(ModComponents.NFC_DATA, new NfcCardComponent(data.b4pin(), out, 10));
                     return true;
                 }
 
@@ -125,20 +125,20 @@ public class NfcMasterPeripheral extends BasePeripheral implements IPeripheralAt
                         throw new LuaException("Max length n<=1024");
 
                     if (data == null) {
-                        card.set(ModComponents.NFC_DATA, new NfcCardComponent(0, out));
+                        card.set(ModComponents.NFC_DATA, new NfcCardComponent(0, out, 10));
                         return true;
                     }
-                    card.set(ModComponents.NFC_DATA, new NfcCardComponent(data.b4pin(), out));
+                    card.set(ModComponents.NFC_DATA, new NfcCardComponent(data.b4pin(), out, 10));
                     return true;
                 }
                 break;
             case B4PIN:
                 var pin = args.getInt(1);
                 if (data == null) {
-                    card.set(ModComponents.NFC_DATA, new NfcCardComponent(pin, new byte[] {}));
+                    card.set(ModComponents.NFC_DATA, new NfcCardComponent(pin, new byte[] {}, 10));
                     return true;
                 }
-                card.set(ModComponents.NFC_DATA, new NfcCardComponent(pin, data.data()));
+                card.set(ModComponents.NFC_DATA, new NfcCardComponent(pin, data.data(), 10));
                 return true;
         }
         return false;

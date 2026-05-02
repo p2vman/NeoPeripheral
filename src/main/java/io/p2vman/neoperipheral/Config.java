@@ -14,13 +14,17 @@ public class Config {
     private static final ModConfigSpec.IntValue RADAR_RANGE_LIMIT = BUILDER.defineInRange("radar_range_limit", 2048, 16, Integer.MAX_VALUE);
     private static final ModConfigSpec.IntValue RADAR_DEFAULT_RANGE = BUILDER.defineInRange("radar_default_range", 1024, 16, Integer.MAX_VALUE);
 
+    private static final ModConfigSpec.BooleanValue CHEAT_CANNON_MOUNT =  BUILDER.define("cheat_cannon_mount", true);
+
     static final ModConfigSpec SPEC = BUILDER.build();
 
     public static int _RADAR_RANGE_LIMIT;
     public static int _RADAR_DEFAULT_RANGE;
+    public static boolean _CHEAT_CANNON_MOUNT;
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
         _RADAR_RANGE_LIMIT = RADAR_RANGE_LIMIT.get();
         _RADAR_DEFAULT_RANGE = RADAR_DEFAULT_RANGE.get();
+        _CHEAT_CANNON_MOUNT = CHEAT_CANNON_MOUNT.get();
     }
 }

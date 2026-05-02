@@ -66,7 +66,7 @@ public class ModRegistry {
         components.add(Component.literal("WIP").withStyle(ChatFormatting.YELLOW));
     }));
     public static final DeferredItem<BlockItem> CRYPTO_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(CRYPTO_BLOCK, ((stack, context, components, flag) -> {
-        components.add(Component.literal("WIP").withStyle(ChatFormatting.YELLOW));
+        components.add(Component.literal("No implement").withStyle(ChatFormatting.YELLOW));
     }));
     public static final DeferredItem<BlockItem> NFC_MASTER_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(NFC_MASTER_BLOCK, ((stack, context, components, flag) -> {
         components.add(Component.literal("WIP").withStyle(ChatFormatting.YELLOW));
@@ -171,6 +171,4 @@ public class ModRegistry {
         ModuleLookup.register(CREATIVE_RADAR_MODULE_ITEM.get(), CreativeRadarModule::new);
         ModuleLookup.register(CRYPTO_MODULE_ITEM.get(), CryptoModule::new);
     }
-
-
 }

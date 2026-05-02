@@ -6,7 +6,7 @@
   "block.neoperipheral.socket": "Socket peripheral",
   "block.neoperipheral.nfc_master": "Nfc master peripheral",
   "block.neoperipheral.nfc_reader": "Nfc reader peripheral",
-  "block.neoperipheral.crypto": "Crypto peripheral",
+  "block.neoperipheral.crypto": "Crypto accelerator peripheral",
 
   "item.neoperipheral.radar_module": "Radar Module",
   "item.neoperipheral.nfc_card": "Nfc card"
