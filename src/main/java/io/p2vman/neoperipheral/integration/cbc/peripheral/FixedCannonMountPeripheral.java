@@ -4,25 +4,38 @@ import com.simibubi.create.content.contraptions.AssemblyException;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IPeripheral;
+import io.p2vman.neoperipheral.Config;
 import io.p2vman.neoperipheral.integration.cbc.MountedAutocannonContraptionProxy;
 import io.p2vman.neoperipheral.mixin.addon.cbc.AbstractMountedCannonContraptionAccessor;
 import io.p2vman.neoperipheral.mixin.addon.cbc.FixedCannonMountBlockEntityAccessor;
+import io.p2vman.neoperipheral.util.CallLimiter;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import rbasamoyai.createbigcannons.cannon_control.contraption.AbstractMountedCannonContraption;
 import rbasamoyai.createbigcannons.cannon_control.contraption.PitchOrientedContraptionEntity;
 import rbasamoyai.createbigcannons.cannon_control.fixed_cannon_mount.FixedCannonMountBlockEntity;
 
+import java.util.Set;
+
 public class FixedCannonMountPeripheral implements IPeripheral {
     private final FixedCannonMountBlockEntity mount;
+    private final CallLimiter callLimiter;
 
-    public FixedCannonMountPeripheral(FixedCannonMountBlockEntity mount) {
-        this.mount = mount;
+    public FixedCannonMountPeripheral(Direction direction, BlockEntity mount) {
+        this.mount = (FixedCannonMountBlockEntity) mount;
+        this.callLimiter = new CallLimiter.RingCallLimiter(Config._CHEAT_CANNON_MAX_FIRE_RATE, Config._CHEAT_CANNON_RATE_WINDOW);
     }
 
     @Override
     public String getType() {
         return "compact_mount";
+    }
+
+    @Override
+    public Set<String> getAdditionalTypes() {
+        return Set.of("neo_compact_mount");
     }
 
     @Override
@@ -59,6 +72,7 @@ public class FixedCannonMountPeripheral implements IPeripheral {
         if (contraption == null) throw new LuaException("Cannon is not assembled");
         if (!(mount.getLevel() instanceof ServerLevel serverLevel))
             throw new LuaException("Cannot fire");
+        if (!callLimiter.tryCall(contraption.getServer().getTickCount())) return;
 
         var con = contraption.getContraption();
         if (con instanceof MountedAutocannonContraptionProxy proxy) {

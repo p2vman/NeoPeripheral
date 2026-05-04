@@ -11,6 +11,7 @@ import io.p2vman.neoperipheral.Config;
 import io.p2vman.neoperipheral.IPrefSource;
 import io.p2vman.neoperipheral.lua.Table;
 import io.p2vman.neoperipheral.lua.TableArray;
+import io.p2vman.neoperipheral.lua.UUIDTable;
 
 public class RadarPeripheral extends BasePeripheral {
     private final boolean creative;
@@ -33,7 +34,7 @@ public class RadarPeripheral extends BasePeripheral {
     public MethodResult scanForSubLevels(IArguments arguments) throws LuaException {
         var radius = this.creative ? arguments.optInt(0, 16) : Math.max(16, Math.min(Config._RADAR_RANGE_LIMIT, arguments.optInt(0, Config._RADAR_DEFAULT_RANGE)));
         var sub_levels = new TableArray();
-        var increment = 0;
+        var increment = 1;
 
         var absolute = arguments.optBoolean(1, false) && creative;
 
@@ -43,9 +44,7 @@ public class RadarPeripheral extends BasePeripheral {
             var subLevel = (ServerSubLevel) it.next();
             var sub = new Table();
 
-            var uuid = subLevel.getUniqueId();
-            sub.put("id1", uuid.getLeastSignificantBits());
-            sub.put("id2", uuid.getMostSignificantBits());
+            sub.put("id", new UUIDTable(subLevel.getUniqueId()));
 
             var pose = subLevel.logicalPose();
             var pos = pose.position();

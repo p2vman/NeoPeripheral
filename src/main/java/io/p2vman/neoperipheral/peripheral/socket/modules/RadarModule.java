@@ -10,6 +10,7 @@ import dev.ryanhcode.sable.sublevel.ServerSubLevel;
 import io.p2vman.neoperipheral.Config;
 import io.p2vman.neoperipheral.lua.Table;
 import io.p2vman.neoperipheral.lua.TableArray;
+import io.p2vman.neoperipheral.lua.UUIDTable;
 import io.p2vman.neoperipheral.peripheral.SocketPeripheral;
 import io.p2vman.neoperipheral.peripheral.socket.AbstractModule;
 import io.p2vman.neoperipheral.peripheral.socket.Module;
@@ -76,20 +77,18 @@ public class RadarModule extends AbstractModule {
         ModuleExtensions.checkModuleEnabled(this);
         var radius = this.creative ? arguments.optInt(0, 16) : Math.max(16, Math.min(Config._RADAR_RANGE_LIMIT, arguments.optInt(0, Config._RADAR_DEFAULT_RANGE)));
         var sub_levels = new TableArray();
-        var increment = 0;
+        var increment = 1;
 
         var absolute = arguments.optBoolean(1, false) && creative;
 
-        var source = this.peripheral.getSource();
+        var source = peripheral.getSource();
         var _pos = Sable.HELPER.projectOutOfSubLevel(source.getLevel(), source.getPos().getCenter());
         var it = Sable.HELPER.getAllIntersecting(source.getLevel(), new BoundingBox3d(_pos.x - radius, _pos.y - radius, _pos.z - radius, _pos.x + radius, _pos.y + radius, _pos.z + radius)).iterator();
         while (it.hasNext()) {
             var subLevel = (ServerSubLevel) it.next();
             var sub = new Table();
 
-            var uuid = subLevel.getUniqueId();
-            sub.put("id1", uuid.getLeastSignificantBits());
-            sub.put("id2", uuid.getMostSignificantBits());
+            sub.put("id", new UUIDTable(subLevel.getUniqueId()));
 
             var pose = subLevel.logicalPose();
             var pos = pose.position();

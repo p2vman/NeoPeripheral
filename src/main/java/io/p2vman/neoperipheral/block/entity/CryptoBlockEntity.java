@@ -1,6 +1,7 @@
 package io.p2vman.neoperipheral.block.entity;
 
 import dan200.computercraft.api.peripheral.IPeripheral;
+import io.p2vman.neoperipheral.IPrefSource;
 import io.p2vman.neoperipheral.ModRegistry;
 import io.p2vman.neoperipheral.peripheral.CryptoPeripheral;
 import io.p2vman.neoperipheral.util.Lazy;
@@ -12,10 +13,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 public class CryptoBlockEntity extends BasePeripheralBlockEntity {
-    private final PeripheralLazy<CryptoPeripheral> peripheral;
+    private final PeripheralLazy<CryptoPeripheral, IPrefSource> peripheral;
     public CryptoBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModRegistry.CRYPTO_BLOCK_ENTITY.get(), pos, blockState);
-        this.peripheral = PeripheralLazy.<CryptoPeripheral>of(CryptoPeripheral::new);
+        this.peripheral = PeripheralLazy.<CryptoPeripheral, IPrefSource>of(CryptoPeripheral::new);
     }
 
     @Override

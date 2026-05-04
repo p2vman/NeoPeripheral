@@ -8,24 +8,24 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class PeripheralLazy<T extends IPeripheral> {
+public class PeripheralLazy<T extends IPeripheral, S> {
     private final Object lock = new Object();
     private T value;
     private Boolean initialized;
-    private final PeripheralFactory<T> provider;
+    private final PeripheralFactory<T, S> provider;
 
-    public static <T extends IPeripheral> PeripheralLazy<T> of() {
-        return new PeripheralLazy<T>((PeripheralFactory<T>) null);
+    public static <T extends IPeripheral, S> PeripheralLazy<T, S> of() {
+        return new PeripheralLazy<T, S>((PeripheralFactory<T, S>) null);
     }
 
-    public static <T extends IPeripheral> PeripheralLazy<T> of(final T value)
+    public static <T extends IPeripheral, S> PeripheralLazy<T, S> of(final T value)
     {
-        return new PeripheralLazy<T>(value);
+        return new PeripheralLazy<T, S>(value);
     }
 
-    public static <T extends IPeripheral> PeripheralLazy<T> of(final PeripheralFactory<T> provider)
+    public static <T extends IPeripheral, S> PeripheralLazy<T, S> of(final PeripheralFactory<T, S> provider)
     {
-        return new PeripheralLazy<T>(provider);
+        return new PeripheralLazy<T, S>(provider);
     }
 
     private PeripheralLazy(final T value)
@@ -35,14 +35,14 @@ public class PeripheralLazy<T extends IPeripheral> {
         this.provider = (direction, source) -> value;
     }
 
-    private PeripheralLazy(final PeripheralFactory<T> provider)
+    private PeripheralLazy(final PeripheralFactory<T, S> provider)
     {
         this.value = null;
         this.initialized = false;
         this.provider = provider;
     }
 
-    public T get(@Nullable Direction direction, IPrefSource source)
+    public T get(@Nullable Direction direction, S source)
     {
         synchronized (lock) {
             if (!initialized && provider != null) {
@@ -98,7 +98,7 @@ public class PeripheralLazy<T extends IPeripheral> {
     }
 
     @FunctionalInterface
-    public interface PeripheralFactory<T extends IPeripheral> {
-        @Nullable T createPeripheral(@Nullable Direction direction, IPrefSource source);
+    public interface PeripheralFactory<T extends IPeripheral, S> {
+        @Nullable T createPeripheral(@Nullable Direction direction, S source);
     }
 }

@@ -6,6 +6,7 @@
   "mixins": [
     "addon.cbc.AbstractMountedCannonContraptionAccessor",
     "addon.cbc.CannonMountBlockEntityAccessor",
+    "addon.cbc.CannonMountBlockEntityMixin",
     "addon.cbc.FixedCannonMountBlockEntityAccessor",
     "addon.cbc.MountedAutocannonContraptionMixin"
   ],

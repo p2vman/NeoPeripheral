@@ -1,6 +1,7 @@
 package io.p2vman.neoperipheral.block.entity;
 
 import dan200.computercraft.api.peripheral.IPeripheral;
+import io.p2vman.neoperipheral.IPrefSource;
 import io.p2vman.neoperipheral.ModRegistry;
 import io.p2vman.neoperipheral.peripheral.NfcMasterPeripheral;
 import io.p2vman.neoperipheral.util.PeripheralLazy;
@@ -14,12 +15,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 public class NfcMasterBlockEntity extends BasePeripheralBlockEntity {
-    private final PeripheralLazy<NfcMasterPeripheral> peripheral;
+    private final PeripheralLazy<NfcMasterPeripheral, IPrefSource> peripheral;
     private ItemStack card = ItemStack.EMPTY;
 
     public NfcMasterBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModRegistry.NFC_MASTER_BLOCK_ENTITY.get(), pos, blockState);
-        this.peripheral = PeripheralLazy.<NfcMasterPeripheral>of(NfcMasterPeripheral::new);
+        this.peripheral = PeripheralLazy.<NfcMasterPeripheral, IPrefSource>of(NfcMasterPeripheral::new);
     }
 
     @Override

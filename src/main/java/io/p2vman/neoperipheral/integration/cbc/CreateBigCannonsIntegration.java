@@ -10,9 +10,9 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import rbasamoyai.createbigcannons.index.CBCBlockEntities;
 
 @Integration(modid = "createbigcannons")
-public class CreateBigCannonsAddon {
-    public CreateBigCannonsAddon(IEventBus modBus) {
-        modBus.addListener(CreateBigCannonsAddon::registerCapabilities);
+public class CreateBigCannonsIntegration {
+    public CreateBigCannonsIntegration(IEventBus modBus) {
+        modBus.addListener(CreateBigCannonsIntegration::registerCapabilities);
     }
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -20,13 +20,13 @@ public class CreateBigCannonsAddon {
             event.registerBlockEntity(
                     PeripheralCapability.get(),
                     CBCBlockEntities.CANNON_MOUNT.get(),
-                    (blockEntity, side) -> new CannonMountPeripheral(blockEntity)
+                    (blockEntity, side) -> ((CannonMountBlockEntityProxy) blockEntity).neoperipheral$getPeripheral(side, CannonMountPeripheral::new)
             );
 
             event.registerBlockEntity(
                     PeripheralCapability.get(),
                     CBCBlockEntities.FIXED_CANNON_MOUNT.get(),
-                    (blockEntity, side) -> new FixedCannonMountPeripheral(blockEntity)
+                    (blockEntity, side) -> ((CannonMountBlockEntityProxy) blockEntity).neoperipheral$getPeripheral(side, FixedCannonMountPeripheral::new)
             );
         }
     }
