@@ -12,14 +12,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class EntityRadarBlock extends Block implements EntityBlock {
-    public EntityRadarBlock(Properties p_49795_) {
+public class SableEngineBlock extends Block implements EntityBlock {
+    public SableEngineBlock(Properties p_49795_) {
         super(p_49795_);
     }
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return ModRegistry.ENTITY_RADAR_BLOCK_ENTITY.get().create(blockPos, blockState);
+        return ModRegistry.SABLE_ENGINE_BLOCK_ENTITY.get().create(blockPos, blockState);
     }
 
     @Override

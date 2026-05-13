@@ -1,0 +1,8 @@
+{
+  "selector": "neoperipherals:entity_radar",
+  "priority": 1001,
+
+  "properties": {
+    "sable:mass": 2.0
+  }
+}

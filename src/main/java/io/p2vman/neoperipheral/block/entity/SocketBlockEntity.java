@@ -39,17 +39,6 @@ public class SocketBlockEntity extends BasePeripheralBlockEntity implements IPre
     public @Nullable IPeripheral getPeripheral(@Nullable Direction direction) {
         return this.peripheral.get();
     }
-
-    @Override
-    public BlockPos getPos() {
-        return worldPosition;
-    }
-
-    @Override
-    public BlockEntity getBlockEntity() {
-        return this;
-    }
-
     @Override
     public SocketPeripheral getPref() {
         return peripheral.get();

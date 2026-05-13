@@ -17,14 +17,4 @@ public class ModemBlockEntity extends BasePeripheralBlockEntity {
     public @Nullable IPeripheral getPeripheral(@Nullable Direction direction) {
         return null;
     }
-
-    @Override
-    public BlockPos getPos() {
-        return null;
-    }
-
-    @Override
-    public BlockEntity getBlockEntity() {
-        return null;
-    }
 }

@@ -58,6 +58,12 @@ public class ModRegistry {
     public static final DeferredBlock<NfcReaderBlock> NFC_READER_BLOCK =
             BLOCKS.register("nfc_reader", () -> new NfcReaderBlock(BlockBehaviour.Properties.of()));
 
+    public static final DeferredBlock<EntityRadarBlock> ENTITY_RADAR_BLOCK =
+            BLOCKS.register("entity_radar",  () -> new EntityRadarBlock(BlockBehaviour.Properties.of()));
+
+    public static final DeferredBlock<SableEngineBlock> SABLE_ENGINE_BLOCK =
+            BLOCKS.register("sable_engine", () -> new SableEngineBlock(BlockBehaviour.Properties.of()));
+
     public static final DeferredItem<BlockItem> RADAR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(RADAR_BLOCK);
 
     public static final DeferredItem<BlockItem> CREATIVE_RADAR_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(CREATIVE_RADAR_BLOCK);
@@ -72,6 +78,12 @@ public class ModRegistry {
         components.add(Component.literal("WIP").withStyle(ChatFormatting.YELLOW));
     }));
     public static final DeferredItem<BlockItem> NFC_READER_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(NFC_READER_BLOCK, ((stack, context, components, flag) -> {
+        components.add(Component.literal("WIP").withStyle(ChatFormatting.YELLOW));
+    }));
+    public static final DeferredItem<BlockItem> ENTITY_RADAR_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(ENTITY_RADAR_BLOCK, ((stack, context, components, flag) -> {
+
+    }));
+    public static final DeferredItem<BlockItem> SABLE_ENGINE_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(SABLE_ENGINE_BLOCK, ((stack, context, components, flag) -> {
         components.add(Component.literal("WIP").withStyle(ChatFormatting.YELLOW));
     }));
 
@@ -141,6 +153,24 @@ public class ModRegistry {
             )
     );
 
+    public static final Supplier<BlockEntityType<EntityRadarBlockEntity>> ENTITY_RADAR_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "entity_radar",
+            () -> new BlockEntityType<>(
+                    EntityRadarBlockEntity::new,
+                    Set.of(ENTITY_RADAR_BLOCK.get()),
+                    null
+            )
+    );
+
+    public static final Supplier<BlockEntityType<SableEngineBlockEntity>> SABLE_ENGINE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "sable_engine",
+            () -> new BlockEntityType<>(
+                    SableEngineBlockEntity::new,
+                    Set.of(SABLE_ENGINE_BLOCK.get()),
+                    null
+            )
+    );
+
     public static final Supplier<CreativeModeTab> TAB = CREATIVE_MODE_TABS.register("tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup." + Neoperipheral.MODID + ".tab"))
             .icon(() -> new ItemStack(RADAR_BLOCK_ITEM.asItem()))
@@ -155,6 +185,8 @@ public class ModRegistry {
                 output.accept(CRYPTO_BLOCK_ITEM.get());
                 output.accept(NFC_CARD_ITEM.get());
                 output.accept(CRYPTO_MODULE_ITEM.get());
+                output.accept(ENTITY_RADAR_BLOCK_ITEM.get());
+                output.accept(SABLE_ENGINE_BLOCK_ITEM.get());
             })
             .build()
     );
@@ -166,6 +198,8 @@ public class ModRegistry {
         event.registerBlockEntity(PeripheralCapability.get(), NFC_MASTER_BLOCK_ENTITY.get(), NfcMasterBlockEntity::getPeripheral);
         event.registerBlockEntity(PeripheralCapability.get(), NFC_READER_BLOCK_ENTITY.get(), NfcReaderBlockEntity::getPeripheral);
         event.registerBlockEntity(PeripheralCapability.get(), CRYPTO_BLOCK_ENTITY.get(), CryptoBlockEntity::getPeripheral);
+        event.registerBlockEntity(PeripheralCapability.get(), ENTITY_RADAR_BLOCK_ENTITY.get(), EntityRadarBlockEntity::getPeripheral);
+        if (Config._SABLE_ENGINE_ENABLED) event.registerBlockEntity(PeripheralCapability.get(), SABLE_ENGINE_BLOCK_ENTITY.get(), SableEngineBlockEntity::getPeripheral);
 
         ModuleLookup.register(RADAR_MODULE_ITEM.get(), RadarModule::new);
         ModuleLookup.register(CREATIVE_RADAR_MODULE_ITEM.get(), CreativeRadarModule::new);

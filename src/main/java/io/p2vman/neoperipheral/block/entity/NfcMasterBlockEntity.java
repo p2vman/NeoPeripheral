@@ -28,16 +28,6 @@ public class NfcMasterBlockEntity extends BasePeripheralBlockEntity {
         return peripheral.get(direction, this);
     }
 
-    @Override
-    public BlockPos getPos() {
-        return worldPosition;
-    }
-
-    @Override
-    public BlockEntity getBlockEntity() {
-        return this;
-    }
-
     public ItemStack getCard() {
         return card;
     }

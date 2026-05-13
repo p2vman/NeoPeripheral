@@ -1,14 +1,11 @@
 package io.p2vman.neoperipheral.integration.create.block;
 
 import com.simibubi.create.AllItems;
-import edn.stratodonut.drivebywire.WireSounds;
 import io.p2vman.neoperipheral.ModComponents;
 import io.p2vman.neoperipheral.component.HubLinkComponent;
 import io.p2vman.neoperipheral.integration.create.CreateIntegration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -45,7 +42,6 @@ public class LinkedControllerHubBlock extends Block implements EntityBlock {
         } else {
             if (!level.isClientSide()) {
                 itemStack.set(ModComponents.HUB_LINK, new HubLinkComponent(blockPos.getX(), blockPos.getY(), blockPos.getZ()));
-                level.playSound((Player)null, blockPos, (SoundEvent) WireSounds.PLUG_IN.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 player.displayClientMessage(Component.literal("Controller connected!"), true);
             }
 

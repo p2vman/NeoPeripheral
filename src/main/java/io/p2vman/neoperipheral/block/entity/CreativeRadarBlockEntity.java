@@ -20,18 +20,8 @@ public class CreativeRadarBlockEntity extends BasePeripheralBlockEntity implemen
     }
 
     @Override
-    public BlockPos getPos() {
-        return getBlockPos();
-    }
-
-    @Override
     public RadarPeripheral getPref() {
         return radarPeripheral.get();
-    }
-
-    @Override
-    public BlockEntity getBlockEntity() {
-        return this;
     }
 
     @Nullable

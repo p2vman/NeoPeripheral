@@ -20,18 +20,8 @@ public class RadarBlockEntity extends BasePeripheralBlockEntity implements IPref
     }
 
     @Override
-    public BlockPos getPos() {
-        return worldPosition;
-    }
-
-    @Override
     public RadarPeripheral getPref() {
         return peripheral.get();
-    }
-
-    @Override
-    public BlockEntity getBlockEntity() {
-        return this;
     }
 
     @Nullable

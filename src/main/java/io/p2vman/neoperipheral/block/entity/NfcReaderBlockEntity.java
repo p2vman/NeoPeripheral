@@ -24,16 +24,6 @@ public class NfcReaderBlockEntity extends BasePeripheralBlockEntity {
         return peripheral.get(direction, this);
     }
 
-    @Override
-    public BlockPos getPos() {
-        return worldPosition;
-    }
-
-    @Override
-    public BlockEntity getBlockEntity() {
-        return this;
-    }
-
     public void read(ItemStack itemStack) {
         peripheral.ifPresent((peripheral) -> {
             peripheral.read(itemStack);

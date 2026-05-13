@@ -19,6 +19,14 @@ public class Config {
     private static final ModConfigSpec.IntValue CHEAT_CANNON_MAX_FIRE_RATE;
     private static final ModConfigSpec.IntValue CHEAT_CANNON_RATE_WINDOW;
 
+    private static final ModConfigSpec.IntValue ENTITY_RADAR_RANGE_LIMIT;
+    private static final ModConfigSpec.IntValue PLAYER_RADAR_RANGE_LIMIT;
+    private static final ModConfigSpec.BooleanValue ENTITY_RADAR_SHOW_PLAYER_NAMES;
+
+    private static final ModConfigSpec.BooleanValue SABLE_ENGINE_ENABLED;
+    private static final ModConfigSpec.IntValue SABLE_ENGINE_MAX_RATE;
+    private static final ModConfigSpec.IntValue SABLE_ENGINE_RATE_WINDOW;
+
     static final ModConfigSpec SPEC;
 
 
@@ -37,6 +45,24 @@ public class Config {
 
         BUILDER.pop();
 
+        BUILDER.push("entity_radar");
+
+        ENTITY_RADAR_RANGE_LIMIT = BUILDER.defineInRange("entity_range_limit", 2048, 16, Integer.MAX_VALUE);
+        PLAYER_RADAR_RANGE_LIMIT = BUILDER.defineInRange("player_range_limit", 1024, 16, Integer.MAX_VALUE);
+
+        ENTITY_RADAR_SHOW_PLAYER_NAMES = BUILDER.define("show_player_names", true);
+
+        BUILDER.pop();
+
+        BUILDER.push("sable_engine");
+
+        SABLE_ENGINE_ENABLED = BUILDER.define("enable", true);
+
+        SABLE_ENGINE_MAX_RATE = BUILDER.defineInRange("max_rate", 4, 1, Integer.MAX_VALUE);
+        SABLE_ENGINE_RATE_WINDOW = BUILDER.defineInRange("rate_window", 20, 1, Integer.MAX_VALUE);
+
+        BUILDER.pop();
+
         SPEC = BUILDER.build();
     }
 
@@ -47,6 +73,14 @@ public class Config {
     public static int _CHEAT_CANNON_MAX_FIRE_RATE;
     public static int _CHEAT_CANNON_RATE_WINDOW;
 
+    public static int _ENTITY_RADAR_RANGE_LIMIT;
+    public static int _PLAYER_RADAR_RANGE_LIMIT;
+    public static boolean _ENTITY_RADAR_SHOW_PLAYER_NAMES;
+
+    public static boolean _SABLE_ENGINE_ENABLED;
+    public static int _SABLE_ENGINE_MAX_RATE;
+    public static int _SABLE_ENGINE_RATE_WINDOW;
+
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
         _RADAR_RANGE_LIMIT = RADAR_RANGE_LIMIT.get();
@@ -55,5 +89,13 @@ public class Config {
 
         _CHEAT_CANNON_MAX_FIRE_RATE = CHEAT_CANNON_MAX_FIRE_RATE.get();
         _CHEAT_CANNON_RATE_WINDOW = CHEAT_CANNON_RATE_WINDOW.get();
+
+        _ENTITY_RADAR_RANGE_LIMIT = ENTITY_RADAR_RANGE_LIMIT.get();
+        _PLAYER_RADAR_RANGE_LIMIT = PLAYER_RADAR_RANGE_LIMIT.get();
+        _ENTITY_RADAR_SHOW_PLAYER_NAMES = ENTITY_RADAR_SHOW_PLAYER_NAMES.get();
+
+        _SABLE_ENGINE_ENABLED = SABLE_ENGINE_ENABLED.get();
+        _SABLE_ENGINE_MAX_RATE = SABLE_ENGINE_MAX_RATE.get();
+        _SABLE_ENGINE_RATE_WINDOW = SABLE_ENGINE_RATE_WINDOW.get();
     }
 }

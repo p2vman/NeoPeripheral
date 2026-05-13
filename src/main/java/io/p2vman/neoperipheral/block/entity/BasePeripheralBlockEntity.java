@@ -50,4 +50,14 @@ public abstract class BasePeripheralBlockEntity extends BlockEntity implements I
     public boolean hasLabel() {
         return label != null;
     }
+
+    @Override
+    public BlockPos getPos() {
+        return worldPosition;
+    }
+
+    @Override
+    public BlockEntity getBlockEntity() {
+        return this;
+    }
 }

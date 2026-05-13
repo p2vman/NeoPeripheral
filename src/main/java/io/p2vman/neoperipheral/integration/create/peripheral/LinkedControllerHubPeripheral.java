@@ -53,4 +53,9 @@ public class LinkedControllerHubPeripheral extends BasePeripheral implements IPe
             prees.put(KEY_TO_CHANNEL[button], pressed);
         }
     }
+
+    @LuaFunction
+    public String[] getKeys() {
+        return KEY_TO_CHANNEL;
+    }
 }
