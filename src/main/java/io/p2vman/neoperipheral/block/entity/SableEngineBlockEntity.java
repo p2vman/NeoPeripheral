@@ -22,4 +22,10 @@ public class SableEngineBlockEntity extends BasePeripheralBlockEntity {
         return peripheral.get(direction, this);
     }
 
+    public void tick() {
+        var per = peripheral.get();
+        if (per != null) {
+            per.tick();
+        }
+    }
 }

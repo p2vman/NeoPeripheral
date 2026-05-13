@@ -3,6 +3,7 @@ package io.p2vman.neoperipheral.peripheral;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.lua.MethodResult;
+import dan200.computercraft.api.peripheral.IComputerAccess;
 import dev.ryanhcode.sable.Sable;
 import dev.ryanhcode.sable.api.physics.handle.RigidBodyHandle;
 import dev.ryanhcode.sable.api.physics.mass.MassData;
@@ -13,6 +14,8 @@ import io.p2vman.neoperipheral.IPrefSource;
 import io.p2vman.neoperipheral.util.CallLimiter;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import org.joml.Quaterniondc;
@@ -22,9 +25,10 @@ import org.joml.Vector3dc;
 import javax.annotation.Nullable;
 import java.util.Map;
 
-public class SableEnginePeripheral extends BasePeripheral {
+public class SableEnginePeripheral extends BasePeripheral implements IPeripheralAttacher {
     private SubLevel subLevel;
     private CallLimiter callLimiter;
+    private final ObjectList<IComputerAccess> computers = new ObjectArrayList<>();
     public SableEnginePeripheral(Direction direction, IPrefSource source) {
         super(source);
         this.callLimiter = new CallLimiter.RingCallLimiter(Config._SABLE_ENGINE_MAX_RATE, Config._SABLE_ENGINE_RATE_WINDOW);
@@ -39,6 +43,12 @@ public class SableEnginePeripheral extends BasePeripheral {
     public final @Nullable String getUUID() {
         ServerSubLevel sl = getSubLevel();
         return sl != null ? sl.getUniqueId().toString() : null;
+    }
+
+    private int tick = 0;
+    public void tick() {
+        tick++;
+        queueEvent("engine_tick");
     }
 
     private @Nullable ServerSubLevel getSubLevel() {
@@ -70,7 +80,7 @@ public class SableEnginePeripheral extends BasePeripheral {
     @LuaFunction
     public final double getMass() {
         ServerSubLevel sl = getSubLevel();
-        if (sl == null) {return  Double.NaN;}
+        if (sl == null) {return Double.NaN;}
         MassData massTracker = sl.getMassTracker();
         return massTracker != null ? massTracker.getMass() : 0.0;
     }
@@ -145,7 +155,7 @@ public class SableEnginePeripheral extends BasePeripheral {
 
     @LuaFunction
     public final MethodResult applyLinearImpulse(double x, double y, double z) throws LuaException {
-        if (!callLimiter.tryCall(source.getLevel().getServer().getTickCount())) return null;
+        if (!callLimiter.tryCall(tick)) return null;
         ServerSubLevel sl = getSubLevel();
         if (sl == null) {return null;}
         RigidBodyHandle handle = RigidBodyHandle.of(sl);
@@ -156,7 +166,7 @@ public class SableEnginePeripheral extends BasePeripheral {
 
     @LuaFunction
     public final MethodResult applyAngularImpulse(double x, double y, double z) throws LuaException {
-        if (!callLimiter.tryCall(source.getLevel().getServer().getTickCount())) return null;
+        if (!callLimiter.tryCall(tick)) return null;
         ServerSubLevel sl = getSubLevel();
         if (sl == null) {return null;}
         RigidBodyHandle handle = RigidBodyHandle.of(sl);
@@ -167,7 +177,7 @@ public class SableEnginePeripheral extends BasePeripheral {
 
     @LuaFunction
     public final MethodResult applyImpulseAtPoint(double px, double py, double pz, double fx, double fy, double fz) throws LuaException {
-        if (!callLimiter.tryCall(source.getLevel().getServer().getTickCount())) return null;
+        if (!callLimiter.tryCall(tick)) return null;
         ServerSubLevel sl = getSubLevel();
         if (sl == null) {return null;}
         RigidBodyHandle handle = RigidBodyHandle.of(sl);
@@ -178,7 +188,7 @@ public class SableEnginePeripheral extends BasePeripheral {
 
     @LuaFunction
     public final MethodResult applyImpulseAtRelativePoint(double rx, double ry, double rz, double fx, double fy, double fz) throws LuaException {
-        if (!callLimiter.tryCall(source.getLevel().getServer().getTickCount())) return null;
+        if (!callLimiter.tryCall(tick)) return null;
         ServerSubLevel sl = getSubLevel();
         if (sl == null) {return null;}
         RigidBodyHandle handle = RigidBodyHandle.of(sl);
@@ -186,5 +196,11 @@ public class SableEnginePeripheral extends BasePeripheral {
         BlockPos blockPos = source.getPos();
         handle.applyImpulseAtPoint(new Vector3d(blockPos.getX() + rx, blockPos.getY() + ry, blockPos.getZ() + rz), new Vector3d(fx, fy, fz));
         return MethodResult.of(true);
+    }
+
+
+    @Override
+    public ObjectList<IComputerAccess> getAttachedComputers() {
+        return computers;
     }
 }
