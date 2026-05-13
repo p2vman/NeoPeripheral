@@ -143,8 +143,8 @@ dependencies {
     implementation "curse.maven:create-big-cannons-646668:8002961"
     implementation "curse.maven:create-328085:7963363"
 
-    implementation jarJar("io.p2vman:MyServices:[1.0]")
-    annotationProcessor "io.p2vman:MyServices:1.0"
+    implementation jarJar("io.p2vman:MyServices:[1.1]")
+    annotationProcessor "io.p2vman:MyServices:1.1"
 
     fileTree(dir: 'libs', include: ['*.jar']).each { File f ->
         def base = f.name.replaceAll(/.jar$/, '')

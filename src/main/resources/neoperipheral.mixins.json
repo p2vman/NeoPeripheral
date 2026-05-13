@@ -8,7 +8,9 @@
     "addon.cbc.CannonMountBlockEntityAccessor",
     "addon.cbc.CannonMountBlockEntityMixin",
     "addon.cbc.FixedCannonMountBlockEntityAccessor",
-    "addon.cbc.MountedAutocannonContraptionMixin"
+    "addon.cbc.MountedAutocannonContraptionMixin",
+    "addon.create.LinkedControllerInputPacketMixin",
+    "addon.ctc.TweakedLinkedControllerStopLecternPacketMixin"
   ],
   "client": [
   ],
