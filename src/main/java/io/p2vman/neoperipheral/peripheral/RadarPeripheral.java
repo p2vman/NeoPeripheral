@@ -13,7 +13,10 @@ import io.p2vman.neoperipheral.lua.Table;
 import io.p2vman.neoperipheral.lua.TableArray;
 import io.p2vman.neoperipheral.lua.UUIDTable;
 
+import java.util.Random;
+
 public class RadarPeripheral extends BasePeripheral {
+    private final Random random = new Random();
     private final boolean creative;
     public RadarPeripheral(IPrefSource source, boolean creative) {
         super(source);
@@ -45,17 +48,25 @@ public class RadarPeripheral extends BasePeripheral {
             var sub = new Table();
 
             sub.put("id", new UUIDTable(subLevel.getUniqueId()));
-
+            var name = subLevel.getName();
+            if (name != null) sub.put("name", name);
             var pose = subLevel.logicalPose();
             var pos = pose.position();
+            var dx = _pos.x - pos.x;
+            var dy = _pos.y - pos.y;
+            var dz = _pos.z - pos.z;
+            var dist = dx * dx + dy * dy + dz * dz;
             if (absolute) {
                 sub.put("x", pos.x);
                 sub.put("y", pos.y);
                 sub.put("z", pos.z);
+                sub.put("distance", dist);
             } else {
-                sub.put("x", _pos.x - pos.x);
-                sub.put("y", _pos.y - pos.y);
-                sub.put("z", _pos.z - pos.z);
+                var err = dist/(256);
+                sub.put("x", (_pos.x - pos.x) + (random.nextDouble() * 2 - 1) * err);
+                sub.put("y", (_pos.y - pos.y) + (random.nextDouble() * 2 - 1) * err);
+                sub.put("z", (_pos.z - pos.z) + (random.nextDouble() * 2 - 1) * err);
+                sub.put("distance", dist + (random.nextDouble() * 2 - 1) * err);
             }
 
             var quat = pose.orientation();

@@ -1,4 +1,4 @@
-package io.p2vman.neoperipheral.util;
+package io.p2vman.neoperipheral.math;
 
 public class Myth {
     public static int pow(int base, int exp) {

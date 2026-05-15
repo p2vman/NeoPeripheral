@@ -19,9 +19,12 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.Random;
+
 public class RadarModule extends AbstractModule {
     private final boolean creative;
     private final SocketPeripheral peripheral;
+    private final Random random = new Random();
 
     public RadarModule(ItemStack itemStack, SocketPeripheral peripheral) {
         this(itemStack, peripheral, false);
@@ -89,17 +92,25 @@ public class RadarModule extends AbstractModule {
             var sub = new Table();
 
             sub.put("id", new UUIDTable(subLevel.getUniqueId()));
-
+            var name = subLevel.getName();
+            if (name != null) sub.put("name", name);
             var pose = subLevel.logicalPose();
             var pos = pose.position();
+            var dx = _pos.x - pos.x;
+            var dy = _pos.y - pos.y;
+            var dz = _pos.z - pos.z;
+            var dist = dx * dx + dy * dy + dz * dz;
             if (absolute) {
                 sub.put("x", pos.x);
                 sub.put("y", pos.y);
                 sub.put("z", pos.z);
+                sub.put("distance", dist);
             } else {
-                sub.put("x", _pos.x - pos.x);
-                sub.put("y", _pos.y - pos.y);
-                sub.put("z", _pos.z - pos.z);
+                var err = dist/(256);
+                sub.put("x", (_pos.x - pos.x) + (random.nextDouble() * 2 - 1) * err);
+                sub.put("y", (_pos.y - pos.y) + (random.nextDouble() * 2 - 1) * err);
+                sub.put("z", (_pos.z - pos.z) + (random.nextDouble() * 2 - 1) * err);
+                sub.put("distance", dist + (random.nextDouble() * 2 - 1) * err);
             }
 
             var quat = pose.orientation();

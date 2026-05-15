@@ -15,6 +15,7 @@ import java.lang.reflect.InvocationTargetException;
 @Mod(Neoperipheral.MODID)
 public class Neoperipheral {
     public static final String MODID = "neoperipheral";
+    public static final Boolean debug = Boolean.getBoolean(MODID+"-debug");
     private static final Logger LOGGER = LogUtils.getLogger();
 
 

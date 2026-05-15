@@ -1,7 +1,48 @@
 {
   "itemGroup.neoperipheral.tab": "NeoPeripherals",
 
-  "block.neoperipheral.radar_block": "Блок радара",
+  "block.neoperipheral.radar_block": "Радар",
+  "hover.neoperipheral.radar_block": "Shift для подробностей",
+  "full_hover.neoperipheral.radar_block": "Радар, который может обнаруживать sub_level конструкции в установленном радиусе. Он имеет ограничения, например выводит локальные координаты.",
 
-  "block.neoperipheral.creative_radar_block": "Креативний блок радара"
+  "block.neoperipheral.creative_radar_block": "Креативный радар",
+  "hover.neoperipheral.creative_radar_block": "Shift для подробностей",
+  "full_hover.neoperipheral.creative_radar_block": "Улучшенный радар, который может обнаруживать sub_level конструкции в установленном радиусе. Он не имеет ограничений.",
+
+  "block.neoperipheral.socket": "Сокет для переферий",
+  "hover.neoperipheral.socket": "Shift для подробностей",
+  "full_hover.neoperipheral.socket": "Сокет для переферий, может вмещать в себя максимум 4 переферии.",
+
+  "block.neoperipheral.nfc_master": "NFC Мастер",
+  "hover.neoperipheral.nfc_master": "Shift для подробностей",
+  "full_hover.neoperipheral.nfc_master": "Позволяет чатать, записывать и блокировать NFC карту.",
+
+  "block.neoperipheral.nfc_reader": "NFC Читатель",
+  "hover.neoperipheral.nfc_reader": "Shift для подробностей",
+  "full_hover.neoperipheral.nfc_reader": "Позволяет читать NFC карту.",
+
+  "block.neoperipheral.crypto": "Крипто блок",
+  "hover.neoperipheral.crypto": "Shift для подробностей",
+  "full_hover.neoperipheral.crypto": "Позволяет фармить ауру на сервере",
+
+  "block.neoperipheral.entity_radar": "Детектор сущностей",
+  "hover.neoperipheral.entity_radar": "Shift для подробностей",
+  "full_hover.neoperipheral.entity_radar": "Детектор сущностей, может сканировать игрков и мобов в установленном радиусе.",
+
+  "block.neoperipheral.sable_engine": "Турбореактивный все осевой космическо-соболевский двигатель",
+  "hover.neoperipheral.sable_engine": "Shift для подробностей",
+  "full_hover.neoperipheral.sable_engine": "Двигатель, который опзволяет двигать sub_level конструкции. Он может двигать конструкцию в любом направлении, а также вращать её.",
+
+  "block.neoperipheral.linked_controller_hab": "Хаб контроллера",
+  "hover.neoperipheral.linked_controller_hab": "Shift для подробностей",
+  "full_hover.neoperipheral.linked_controller_hab": "Хаб контроллера, можно подключить create констроллер и получать информацию о нажатых кнопках.",
+
+  "block.neoperipheral.triangle_radar": "Реалистичный радар",
+  "hover.neoperipheral.triangle_radar": "Shift для подробностей",
+  "full_hover.neoperipheral.triangle_radar": "-Dneoperipheral-debug=true для включения",
+
+  "item.neoperipheral.radar_module": "Модуль радара",
+  "item.neoperipheral.crypto_module": "Крипто модуль",
+  "item.neoperipheral.creative_radar_module": "Креативный модуль радара",
+  "item.neoperipheral.nfc_card": "NFC Карта"
 }

@@ -1,13 +1,48 @@
 {
   "itemGroup.neoperipheral.tab": "NeoPeripherals",
 
-  "block.neoperipheral.radar_block": "Radar peripheral",
-  "block.neoperipheral.creative_radar_block": "Creative Radar peripheral",
-  "block.neoperipheral.socket": "Socket peripheral",
-  "block.neoperipheral.nfc_master": "Nfc master peripheral",
-  "block.neoperipheral.nfc_reader": "Nfc reader peripheral",
-  "block.neoperipheral.crypto": "Crypto accelerator peripheral",
+  "block.neoperipheral.radar_block": "Radar",
+  "hover.neoperipheral.radar_block": "Press Shift for details",
+  "full_hover.neoperipheral.radar_block": "A radar that can detect sub_level constructions within a set radius. It has limitations, such as outputting local coordinates.",
+
+  "block.neoperipheral.creative_radar_block": "Creative Radar",
+  "hover.neoperipheral.creative_radar_block": "Press Shift for details",
+  "full_hover.neoperipheral.creative_radar_block": "An advanced radar that can detect sub_level constructions within a set radius. It has no limitations.",
+
+  "block.neoperipheral.socket": "Peripheral Socket",
+  "hover.neoperipheral.socket": "Press Shift for details",
+  "full_hover.neoperipheral.socket": "A peripheral socket that can hold up to 4 peripherals.",
+
+  "block.neoperipheral.nfc_master": "NFC Master",
+  "hover.neoperipheral.nfc_master": "Press Shift for details",
+  "full_hover.neoperipheral.nfc_master": "Allows reading, writing, and locking NFC cards.",
+
+  "block.neoperipheral.nfc_reader": "NFC Reader",
+  "hover.neoperipheral.nfc_reader": "Press Shift for details",
+  "full_hover.neoperipheral.nfc_reader": "Allows reading NFC cards.",
+
+  "block.neoperipheral.crypto": "Crypto Block",
+  "hover.neoperipheral.crypto": "Press Shift for details",
+  "full_hover.neoperipheral.crypto": "Allows farming aura on the server.",
+
+  "block.neoperipheral.entity_radar": "Entity Detector",
+  "hover.neoperipheral.entity_radar": "Press Shift for details",
+  "full_hover.neoperipheral.entity_radar": "An entity detector that can scan for players and mobs within a set radius.",
+
+  "block.neoperipheral.sable_engine": "Turbojet All-Axis Space Sable Engine",
+  "hover.neoperipheral.sable_engine": "Press Shift for details",
+  "full_hover.neoperipheral.sable_engine": "An engine that allows moving sub_level constructions. It can move the construction in any direction, as well as rotate it.",
+
+  "block.neoperipheral.linked_controller_hab": "Controller Hub",
+  "hover.neoperipheral.linked_controller_hab": "Press Shift for details",
+  "full_hover.neoperipheral.linked_controller_hab": "Controller hub, allows connecting a Create linked controller to receive information about pressed buttons.",
+
+  "block.neoperipheral.triangle_radar": "Realistic Radar",
+  "hover.neoperipheral.triangle_radar": "Press Shift for details",
+  "full_hover.neoperipheral.triangle_radar": "-Dneoperipheral-debug=true for enable",
 
   "item.neoperipheral.radar_module": "Radar Module",
-  "item.neoperipheral.nfc_card": "Nfc card"
+  "item.neoperipheral.crypto_module": "Crypto Module",
+  "item.neoperipheral.creative_radar_module": "Creative Radar Module",
+  "item.neoperipheral.nfc_card": "NFC Card"
 }

@@ -9,6 +9,12 @@
     "addon.cbc.CannonMountBlockEntityMixin",
     "addon.cbc.FixedCannonMountBlockEntityAccessor",
     "addon.cbc.MountedAutocannonContraptionMixin",
+    "addon.cbc_at.MountedHeavyAutocannonContraptionMixin",
+    "addon.cbc_at.MountedMediumRocketRailContraptionMixin",
+    "addon.cbc_at.MountedRocketPodContraptionMixin",
+    "addon.cbc_at.MountedTwinAutocannonContraptionMixin",
+    "addon.cbccm.CompactCannonMountBlockEntityAccessor",
+    "addon.cbccm.CompactCannonMountBlockEntityMixin",
     "addon.create.LinkedControllerInputPacketMixin",
     "addon.ctc.TweakedLinkedControllerStopLecternPacketMixin"
   ],

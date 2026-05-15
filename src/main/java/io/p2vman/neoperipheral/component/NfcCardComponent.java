@@ -4,10 +4,8 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.p2vman.neoperipheral.util.Codecs;
-import io.p2vman.neoperipheral.util.Myth;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Mth;
 
 public record NfcCardComponent(int b4pin, byte[] data, int level) {
     static final int[] POW2 = {

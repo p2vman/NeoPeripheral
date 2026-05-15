@@ -2,6 +2,7 @@ package io.p2vman.neoperipheral.client;
 
 import io.p2vman.neoperipheral.ModRegistry;
 import io.p2vman.neoperipheral.Neoperipheral;
+import io.p2vman.neoperipheral.client.render.PeripheralEntityRenderer;
 import io.p2vman.neoperipheral.client.render.SocketBlockEntityRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -15,6 +16,7 @@ public final class ClientModEvents {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(ModRegistry.SOCKET_BLOCK_ENTITY.get(), SocketBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModRegistry.TRIANGLE_RADAR_BLOCK_ENTITY.get(), PeripheralEntityRenderer::new);
     }
 }
 

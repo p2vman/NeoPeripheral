@@ -3,6 +3,7 @@ package io.p2vman.neoperipheral.util;
 import io.p2vman.neoperipheral.item.HoverBlockItem;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -18,25 +19,24 @@ public class ItemsDeferredRegister extends DeferredRegister.Items {
         super(namespace);
     }
 
-    public DeferredItem<BlockItem> registerSimpleHoverBlockItem(String name, Supplier<? extends Block> block, Item.Properties properties, HoverBlockItem.IHoverAppender appender) {
-        return this.register(name, (Function)((key) -> new HoverBlockItem((Block)block.get(), properties, appender)));
+    public DeferredItem<BlockItem> registerSimpleHoverBlockItem(String name, Supplier<? extends Block> block, Item.Properties properties) {
+        return this.register(name, ((key) -> new HoverBlockItem(block.get(), properties, ResourceLocation.fromNamespaceAndPath(this.getNamespace(), name))));
     }
 
-    public DeferredItem<BlockItem> registerSimpleHoverBlockItem(String name, Supplier<? extends Block> block, HoverBlockItem.IHoverAppender appender) {
-        return this.registerSimpleHoverBlockItem(name, block, new Item.Properties(), appender);
+    public DeferredItem<BlockItem> registerSimpleHoverBlockItem(String name, Supplier<? extends Block> block) {
+        return this.registerSimpleHoverBlockItem(name, block, new Item.Properties());
     }
 
-    public DeferredItem<BlockItem> registerSimpleHoverBlockItem(Holder<Block> block, Item.Properties properties, HoverBlockItem.IHoverAppender appender) {
-        String var10001 = ((ResourceKey)block.unwrapKey().orElseThrow()).location().getPath();
+    public DeferredItem<BlockItem> registerSimpleHoverBlockItem(Holder<Block> block, Item.Properties properties) {
         Objects.requireNonNull(block);
-        return this.registerSimpleHoverBlockItem(var10001, block::value, properties, appender);
+        return this.registerSimpleHoverBlockItem(block.unwrapKey().orElseThrow().location().getPath(), block::value, properties);
     }
 
-    public DeferredItem<BlockItem> registerSimpleHoverBlockItem(Holder<Block> block, HoverBlockItem.IHoverAppender appender) {
-        return this.registerSimpleHoverBlockItem(block, new Item.Properties(), appender);
+    public DeferredItem<BlockItem> registerSimpleHoverBlockItem(Holder<Block> block) {
+        return this.registerSimpleHoverBlockItem(block, new Item.Properties());
     }
 
-    public static final ItemsDeferredRegister create(String namespace) {
+    public static ItemsDeferredRegister create(String namespace) {
         return new ItemsDeferredRegister(namespace);
     }
 }
