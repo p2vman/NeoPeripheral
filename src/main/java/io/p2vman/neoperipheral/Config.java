@@ -27,6 +27,13 @@ public class Config {
     private static final ModConfigSpec.IntValue SABLE_ENGINE_MAX_RATE;
     private static final ModConfigSpec.IntValue SABLE_ENGINE_RATE_WINDOW;
 
+    private static final ModConfigSpec.IntValue HOLOGRAM_MAX_WIDTH;
+    private static final ModConfigSpec.IntValue HOLOGRAM_MAX_HEIGHT;
+    private static final ModConfigSpec.IntValue HOLOGRAM_MAX_BUFFER_COUNT;
+    private static final ModConfigSpec.IntValue HOLOGRAM_MAX_FONT_COUNT;
+    private static final ModConfigSpec.BooleanValue HOLOGRAM_FORCE_FULL_UPDATE;
+    private static final ModConfigSpec.IntValue HOLOGRAM_FORCE_FULL_UPDATE_TICK;
+
     static final ModConfigSpec SPEC;
 
 
@@ -38,7 +45,7 @@ public class Config {
         BUILDER.push("cheat_cannon");
 
         CHEAT_CANNON_MOUNT = BUILDER.define("enable", true);
-        CHEAT_CANNON_MAX_FIRE_RATE = BUILDER.defineInRange("max_fire_rate", 8, 1, Integer.MAX_VALUE);
+        CHEAT_CANNON_MAX_FIRE_RATE = BUILDER.defineInRange("max_fire_rate", 14, 1, Integer.MAX_VALUE);
         CHEAT_CANNON_RATE_WINDOW = BUILDER.defineInRange("rate_window", 20, 1, Integer.MAX_VALUE);
 
         BUILDER.pop();
@@ -63,6 +70,17 @@ public class Config {
 
         BUILDER.pop();
 
+        BUILDER.push("hologram");
+
+        HOLOGRAM_MAX_WIDTH = BUILDER.defineInRange("max_width", 256, 16, 1024);
+        HOLOGRAM_MAX_HEIGHT = BUILDER.defineInRange("max_height", 256, 16, 1024);
+        HOLOGRAM_MAX_BUFFER_COUNT = BUILDER.defineInRange("max_buffer_count", 8, 1, 64);
+        HOLOGRAM_MAX_FONT_COUNT = BUILDER.defineInRange("max_font_count", 8, 1, 64);
+        HOLOGRAM_FORCE_FULL_UPDATE = BUILDER.define("force_full_update", true);
+        HOLOGRAM_FORCE_FULL_UPDATE_TICK = BUILDER.defineInRange("force_full_update_tick", 200, 20, 1200);
+
+        BUILDER.pop();
+
         SPEC = BUILDER.build();
     }
 
@@ -81,6 +99,13 @@ public class Config {
     public static int _SABLE_ENGINE_MAX_RATE;
     public static int _SABLE_ENGINE_RATE_WINDOW;
 
+    public static int _HOLOGRAM_MAX_WIDTH;
+    public static int _HOLOGRAM_MAX_HEIGHT;
+    public static int _HOLOGRAM_MAX_BUFFER_COUNT;
+    public static int _HOLOGRAM_MAX_FONT_COUNT;
+    public static boolean _HOLOGRAM_FORCE_FULL_UPDATE;
+    public static int _HOLOGRAM_FORCE_FULL_UPDATE_TICK;
+
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
         _RADAR_RANGE_LIMIT = RADAR_RANGE_LIMIT.get();
@@ -97,5 +122,12 @@ public class Config {
         _SABLE_ENGINE_ENABLED = SABLE_ENGINE_ENABLED.get();
         _SABLE_ENGINE_MAX_RATE = SABLE_ENGINE_MAX_RATE.get();
         _SABLE_ENGINE_RATE_WINDOW = SABLE_ENGINE_RATE_WINDOW.get();
+
+        _HOLOGRAM_MAX_WIDTH = HOLOGRAM_MAX_WIDTH.get();
+        _HOLOGRAM_MAX_HEIGHT = HOLOGRAM_MAX_HEIGHT.get();
+        _HOLOGRAM_MAX_BUFFER_COUNT = HOLOGRAM_MAX_BUFFER_COUNT.get();
+        _HOLOGRAM_MAX_FONT_COUNT = HOLOGRAM_MAX_FONT_COUNT.get();
+        _HOLOGRAM_FORCE_FULL_UPDATE = HOLOGRAM_FORCE_FULL_UPDATE.get();
+        _HOLOGRAM_FORCE_FULL_UPDATE_TICK = HOLOGRAM_FORCE_FULL_UPDATE_TICK.get();
     }
 }

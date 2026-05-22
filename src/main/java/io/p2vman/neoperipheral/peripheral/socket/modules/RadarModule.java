@@ -99,14 +99,14 @@ public class RadarModule extends AbstractModule {
             var dx = _pos.x - pos.x;
             var dy = _pos.y - pos.y;
             var dz = _pos.z - pos.z;
-            var dist = dx * dx + dy * dy + dz * dz;
+            var dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
             if (absolute) {
                 sub.put("x", pos.x);
                 sub.put("y", pos.y);
                 sub.put("z", pos.z);
                 sub.put("distance", dist);
             } else {
-                var err = dist/(256);
+                var err = dist/31.006276680299816;
                 sub.put("x", (_pos.x - pos.x) + (random.nextDouble() * 2 - 1) * err);
                 sub.put("y", (_pos.y - pos.y) + (random.nextDouble() * 2 - 1) * err);
                 sub.put("z", (_pos.z - pos.z) + (random.nextDouble() * 2 - 1) * err);

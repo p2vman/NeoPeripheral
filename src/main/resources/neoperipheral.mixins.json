@@ -16,7 +16,10 @@
     "addon.cbccm.CompactCannonMountBlockEntityAccessor",
     "addon.cbccm.CompactCannonMountBlockEntityMixin",
     "addon.create.LinkedControllerInputPacketMixin",
-    "addon.ctc.TweakedLinkedControllerStopLecternPacketMixin"
+    "addon.ctc.TweakedLinkedControllerStopLecternPacketMixin",
+    "addon.synaxis.AbstractDynamicMotorBlockEntityMixin",
+    "addon.synaxis.CompactFlapBlockEntityMixin",
+    "addon.synaxis.KineticResistorBlockEntityMixin"
   ],
   "client": [
   ],

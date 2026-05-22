@@ -155,7 +155,7 @@ public class SableEnginePeripheral extends BasePeripheral implements IPeripheral
 
     @LuaFunction
     public final MethodResult applyLinearImpulse(double x, double y, double z) throws LuaException {
-        if (!callLimiter.tryCall(tick)) return null;
+        if (!callLimiter.tryCall(tick)) return MethodResult.of(false);
         ServerSubLevel sl = getSubLevel();
         if (sl == null) {return null;}
         RigidBodyHandle handle = RigidBodyHandle.of(sl);
@@ -166,7 +166,7 @@ public class SableEnginePeripheral extends BasePeripheral implements IPeripheral
 
     @LuaFunction
     public final MethodResult applyAngularImpulse(double x, double y, double z) throws LuaException {
-        if (!callLimiter.tryCall(tick)) return null;
+        if (!callLimiter.tryCall(tick)) return MethodResult.of(false);
         ServerSubLevel sl = getSubLevel();
         if (sl == null) {return null;}
         RigidBodyHandle handle = RigidBodyHandle.of(sl);
@@ -177,7 +177,7 @@ public class SableEnginePeripheral extends BasePeripheral implements IPeripheral
 
     @LuaFunction
     public final MethodResult applyImpulseAtPoint(double px, double py, double pz, double fx, double fy, double fz) throws LuaException {
-        if (!callLimiter.tryCall(tick)) return null;
+        if (!callLimiter.tryCall(tick)) return MethodResult.of(false);
         ServerSubLevel sl = getSubLevel();
         if (sl == null) {return null;}
         RigidBodyHandle handle = RigidBodyHandle.of(sl);
@@ -188,7 +188,7 @@ public class SableEnginePeripheral extends BasePeripheral implements IPeripheral
 
     @LuaFunction
     public final MethodResult applyImpulseAtRelativePoint(double rx, double ry, double rz, double fx, double fy, double fz) throws LuaException {
-        if (!callLimiter.tryCall(tick)) return null;
+        if (!callLimiter.tryCall(tick)) return MethodResult.of(false);
         ServerSubLevel sl = getSubLevel();
         if (sl == null) {return null;}
         RigidBodyHandle handle = RigidBodyHandle.of(sl);

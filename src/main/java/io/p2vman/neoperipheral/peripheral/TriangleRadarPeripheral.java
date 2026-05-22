@@ -1,32 +1,19 @@
 package io.p2vman.neoperipheral.peripheral;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.lua.MethodResult;
 import dev.ryanhcode.sable.Sable;
-import dev.ryanhcode.sable.companion.math.BoundingBox3d;
 import dev.ryanhcode.sable.sublevel.ServerSubLevel;
-import dev.ryanhcode.sable.sublevel.SubLevel;
-import io.p2vman.neoperipheral.Config;
 import io.p2vman.neoperipheral.IPrefSource;
 import io.p2vman.neoperipheral.lua.Table;
 import io.p2vman.neoperipheral.lua.TableArray;
 import io.p2vman.neoperipheral.lua.UUIDTable;
 import io.p2vman.neoperipheral.math.Triangled;
 import io.p2vman.neoperipheral.util.CallLimiter;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.ParticleStatus;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix3d;
-import org.joml.Matrix4d;
-import org.joml.Matrix4f;
-import org.joml.Vector3d;
 
 import java.util.Random;
 
@@ -82,8 +69,8 @@ public class TriangleRadarPeripheral extends BasePeripheral implements IPeripher
                 var dx = _pos.x - pos.x;
                 var dy = _pos.y - pos.y;
                 var dz = _pos.z - pos.z;
-                var dist = dx * dx + dy * dy + dz * dz;
-                var err = dist/(256);
+                var dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                var err = dist/16;
                 sub.put("distance", dist + (random.nextDouble() * 2 - 1) * err);
                 sub.put("x", (_pos.x - pos.x) + (random.nextDouble() * 2 - 1) * err);
                 sub.put("y", (_pos.y - pos.y) + (random.nextDouble() * 2 - 1) * err);

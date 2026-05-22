@@ -41,6 +41,10 @@
   "hover.neoperipheral.triangle_radar": "Press Shift for details",
   "full_hover.neoperipheral.triangle_radar": "-Dneoperipheral-debug=true for enable",
 
+  "block.neoperipheral.hologram_block": "Hologram",
+  "hover.neoperipheral.hologram_block": "Press Shift for details",
+  "full_hover.neoperipheral.hologram_block": "WIP",
+
   "item.neoperipheral.radar_module": "Radar Module",
   "item.neoperipheral.crypto_module": "Crypto Module",
   "item.neoperipheral.creative_radar_module": "Creative Radar Module",

@@ -35,7 +35,7 @@ public class FixedCannonMountPeripheral implements IPeripheral {
 
     @Override
     public Set<String> getAdditionalTypes() {
-        return Set.of("neo_fixed_mount");
+        return Set.of("neo_fixed_mount", "neo_mount");
     }
 
     @Override

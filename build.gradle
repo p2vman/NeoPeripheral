@@ -19,6 +19,9 @@ repositories {
     flatDir {
         dir 'libs'
     }
+    flatDir {
+        dir 'jij'
+    }
     maven {
         name = 'azmod-maven'
         url = "https://maven.azmod.net/releases"
@@ -137,22 +140,30 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
-    implementation "curse.maven:cc-tweaked-282001:5714512"
     implementation "curse.maven:sable-1312371:7948753"
     implementation "curse.maven:cloth-config-348521:5729127"
     implementation "curse.maven:create-big-cannons-646668:8002961"
     implementation "curse.maven:create-328085:7963363"
 
-    implementation jarJar("io.p2vman:MyServices:[1.1]")
-    annotationProcessor "io.p2vman:MyServices:1.1"
+    implementation jarJar("io.p2vman:MyServices:[1.2]")
+    annotationProcessor "io.p2vman:MyServices:1.2"
 
     fileTree(dir: 'libs', include: ['*.jar']).each { File f ->
         def base = f.name.replaceAll(/.jar$/, '')
         def idx = base.lastIndexOf('-')
         if (idx > 0) {
-            implementation("libs:${base.substring(0, idx)}:[${base.substring(idx + 1)}]")
+            implementation("libs:${base.substring(0, idx)}:${base.substring(idx + 1)}")
         }
     }
+
+    fileTree(dir: 'jij', include: ['*.jar']).each { File f ->
+        def base = f.name.replaceAll(/.jar$/, '')
+        def idx = base.lastIndexOf('-')
+        if (idx > 0) {
+            implementation "jij:${base.substring(0, idx)}:[${base.substring(idx + 1)}]"
+        }
+    }
+
 
     //for tests
     implementation "curse.maven:nbtedit-reborn-678133:6125444"
