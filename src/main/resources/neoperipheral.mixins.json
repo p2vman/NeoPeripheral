@@ -18,7 +18,10 @@
     "addon.create.LinkedControllerInputPacketMixin",
     "addon.ctc.TweakedLinkedControllerStopLecternPacketMixin",
     "addon.synaxis.AbstractDynamicMotorBlockEntityMixin",
+    "addon.synaxis.CameraBlockEntityAccessor",
+    "addon.synaxis.CameraBlockEntityMixin",
     "addon.synaxis.CompactFlapBlockEntityMixin",
+    "addon.synaxis.JetBlockEntityMixin",
     "addon.synaxis.KineticResistorBlockEntityMixin"
   ],
   "client": [

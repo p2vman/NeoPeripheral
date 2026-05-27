@@ -14,4 +14,7 @@ import java.lang.annotation.Target;
 public @interface Integration {
     @Metadata
     String modid();
+
+    @Metadata
+    String[] depends() default "";
 }

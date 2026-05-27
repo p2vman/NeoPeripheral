@@ -31,5 +31,17 @@ public class SynaxisIntegration {
                 SynaxisBlockEntities.COMPACT_FLAP.get(),
                 (b, d) -> ((IExternalPeripheralHolder) b).getPeripheral(d)
         );
+
+        event.registerBlockEntity(
+                PeripheralCapability.get(),
+                SynaxisBlockEntities.CAMERA.get(),
+                (b, d) -> ((IExternalPeripheralHolder) b).getPeripheral(d)
+        );
+
+        event.registerBlockEntity(
+                PeripheralCapability.get(),
+                SynaxisBlockEntities.JET.get(),
+                (b, d) -> ((IExternalPeripheralHolder) b).getPeripheral(d)
+        );
     }
 }

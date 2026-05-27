@@ -9,7 +9,7 @@ import io.p2vman.neoperipheral.integration.cbccm.peripheral.CompactCannonMountPe
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
-@Integration(modid = "cbc_compact_mount")
+@Integration(modid = "cbc_compact_mount", depends = "createbigcannons")
 public class CBCCMIntegration {
     public CBCCMIntegration(IEventBus modBus) {
         modBus.addListener(CBCCMIntegration::registerCapabilities);

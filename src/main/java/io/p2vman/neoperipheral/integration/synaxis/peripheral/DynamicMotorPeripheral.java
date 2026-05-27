@@ -3,6 +3,7 @@ package io.p2vman.neoperipheral.integration.synaxis.peripheral;
 import com.verr1.synaxis.content.blocks.motor.AbstractDynamicMotorBlockEntity;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IPeripheral;
+import io.p2vman.neoperipheral.lua.Table;
 import net.minecraft.core.Direction;
 import org.jetbrains.annotations.Nullable;
 
@@ -88,5 +89,17 @@ public class DynamicMotorPeripheral implements IPeripheral {
     @LuaFunction(mainThread = true)
     public boolean getGravityCompensation() {
         return entity.eliminateGravity();
+    }
+
+    @LuaFunction(mainThread = true)
+    public Table collect() {
+        var data = new Table();
+        data.put("target", entity.target());
+        data.put("gainP", entity.gainP());
+        data.put("gainI", entity.gainI());
+        data.put("gainD", entity.gainD());
+        data.put("angleMode", entity.angleMode());
+        data.put("eliminateGravity", entity.eliminateGravity());
+        return data;
     }
 }

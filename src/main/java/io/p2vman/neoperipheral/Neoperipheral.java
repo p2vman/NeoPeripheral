@@ -11,6 +11,9 @@ import org.slf4j.Logger;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 @Mod(Neoperipheral.MODID)
 public class Neoperipheral {
@@ -31,16 +34,40 @@ public class Neoperipheral {
         bus.addListener(ModRegistry::registerCapabilities);
 
         try {
-            MetaServiceLoader.load("neo_integration").forEach(neoAddon -> {
+            var addons = MetaServiceLoader.load("neo_integration").stream()
+                    .collect(Collectors.toMap(
+                            a -> (String) a.metadata().getOrDefault("modid", ""),
+                            a -> a,
+                            (a, b) -> a,
+                            LinkedHashMap::new
+                    ));
+
+            Set<String> visited = new LinkedHashSet<>();
+            Set<String> visiting = new HashSet<>();
+
+            Consumer<String>[] visit = new Consumer[1];
+            visit[0] = modid -> {
+                if (visited.contains(modid) || !addons.containsKey(modid)) return;
+                if (!visiting.add(modid)) {
+                    LOGGER.warn("Circular dependency at '{}'", modid);
+                    return;
+                }
+                if (addons.get(modid).metadata().get("depends") instanceof List<?> deps)
+                    deps.forEach(dep -> visit[0].accept((String) dep));
+                visiting.remove(modid);
+                visited.add(modid);
+            };
+
+            addons.keySet().forEach(visit[0]);
+
+            visited.forEach(modid -> {
                 try {
-                    var modid = (String) neoAddon.metadata().getOrDefault("modid", "");
                     if (ModList.get().isLoaded(modid)) {
-                        Class<?> clazz = Class.forName(neoAddon.className());
+                        Class<?> clazz = Class.forName(addons.get(modid).className());
                         clazz.getDeclaredConstructor(IEventBus.class).newInstance(bus);
                         LOGGER.info("Integration '{}' loaded", modid);
                     }
-                } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException |
-                         IllegalAccessException | InvocationTargetException e) {
+                } catch (ReflectiveOperationException e) {
                     LOGGER.error("Failed to load neo_addon class", e);
                 }
             });

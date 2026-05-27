@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.oleksiy.quicktodo.TaskService">
+    <tasks>
+      <task id="dab610c3-bd32-4a25-a07c-e24d3fbf97db" text="реализовать crypto переферию и модуль" level="1" priority="MEDIUM" createdAt="1779656028234" lastModified="1779656028233">
+        <option name="priorityEnum" value="MEDIUM" />
+      </task>
+      <task id="b3130990-9f94-47c5-9493-75769eb5ca2a" text="реализовать luajit/wasm compute модуль" priority="LOW" createdAt="1779655698676" lastModified="1779656116475">
+        <option name="priorityEnum" value="LOW" />
+        <description>скорей всего зделать как отдельний мод з C++ рантаймом</description>
+      </task>
+      <task id="4efadf6f-fc0c-4069-94c3-3acf2786f1b1" text="Реализовать кастомний модем" priority="MEDIUM" createdAt="1779655503909" lastModified="1779655716345">
+        <option name="priorityEnum" value="MEDIUM" />
+        <description>реализовать кастомний модем з большим диапазоном портов (Integer.MAX_VALUE) и возможно совместимость з ванильним</description>
+      </task>
+      <task id="6211b26f-3228-4c85-be77-c1e3172b2531" text="Реализовать Monitor модем или режим модему" priority="LOW" createdAt="1779655392204" lastModified="1779655712713">
+        <option name="priorityEnum" value="LOW" />
+        <description>Надо 2 версии креатив без лимит дальность сурв з лимит дальностю, сама идея механика того что модем перехвативает все сообщения в определеном радиусе на всех каналах</description>
+      </task>
+    </tasks>
+    <expandedTaskIds>
+      <id value="6211b26f-3228-4c85-be77-c1e3172b2531" />
+      <id value="dab610c3-bd32-4a25-a07c-e24d3fbf97db" />
+    </expandedTaskIds>
+  </component>
+</project>

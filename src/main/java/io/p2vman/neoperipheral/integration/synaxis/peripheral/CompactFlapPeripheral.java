@@ -33,4 +33,14 @@ public class CompactFlapPeripheral implements IPeripheral {
     public double getAngle() {
         return this.entity.angle();
     }
+
+    @LuaFunction(mainThread = true)
+    public void assemble() {
+        this.entity.assemble();
+    }
+
+    @LuaFunction(mainThread = true)
+    public void disassemble() {
+        this.entity.disassemble();
+    }
 }
