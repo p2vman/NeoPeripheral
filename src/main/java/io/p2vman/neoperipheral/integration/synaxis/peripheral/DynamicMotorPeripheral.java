@@ -16,7 +16,7 @@ public class DynamicMotorPeripheral implements IPeripheral {
 
     @Override
     public String getType() {
-        return "dynamic_motor";
+        return "synaxis_dynamic_motor";
     }
 
     @Override

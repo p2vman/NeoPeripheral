@@ -17,7 +17,7 @@ public class CameraPeripheral implements IPeripheral {
 
     @Override
     public String getType() {
-        return "camera";
+        return "synaxis_camera";
     }
 
     @Override

@@ -14,7 +14,7 @@ public class JetPeripheral implements IPeripheral {
 
     @Override
     public String getType() {
-        return "jet";
+        return "synaxis_jet";
     }
 
     @LuaFunction(mainThread = true)

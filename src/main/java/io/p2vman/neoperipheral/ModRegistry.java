@@ -11,7 +11,6 @@ import io.p2vman.neoperipheral.peripheral.socket.modules.CreativeRadarModule;
 import io.p2vman.neoperipheral.peripheral.socket.modules.CryptoModule;
 import io.p2vman.neoperipheral.peripheral.socket.modules.RadarModule;
 import io.p2vman.neoperipheral.util.ItemsDeferredRegister;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;

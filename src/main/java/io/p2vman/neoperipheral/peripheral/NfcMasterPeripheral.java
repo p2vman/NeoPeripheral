@@ -1,6 +1,9 @@
 package io.p2vman.neoperipheral.peripheral;
 
-import dan200.computercraft.api.lua.*;
+import dan200.computercraft.api.lua.IArguments;
+import dan200.computercraft.api.lua.LuaException;
+import dan200.computercraft.api.lua.LuaFunction;
+import dan200.computercraft.api.lua.MethodResult;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import io.p2vman.neoperipheral.IPrefSource;
 import io.p2vman.neoperipheral.ModComponents;

@@ -10,7 +10,6 @@ import io.p2vman.neoperipheral.lua.Table;
 import io.p2vman.neoperipheral.lua.TableArray;
 import io.p2vman.neoperipheral.util.EntityTypeCache;
 import net.minecraft.core.Direction;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;

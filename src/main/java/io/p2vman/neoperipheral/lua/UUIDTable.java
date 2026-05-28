@@ -1,6 +1,5 @@
 package io.p2vman.neoperipheral.lua;
 
-import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.LuaTable;
 import io.p2vman.neoperipheral.util.SimpleEntry;
 import org.jetbrains.annotations.NotNull;

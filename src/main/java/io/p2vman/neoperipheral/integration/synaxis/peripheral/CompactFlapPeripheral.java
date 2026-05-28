@@ -35,6 +35,16 @@ public class CompactFlapPeripheral implements IPeripheral {
     }
 
     @LuaFunction(mainThread = true)
+    public void setTilt(final double tilt) {
+        this.entity.setTilt(tilt);
+    }
+
+    @LuaFunction(mainThread = true)
+    public double getTilt() {
+        return this.entity.tilt();
+    }
+
+    @LuaFunction(mainThread = true)
     public void assemble() {
         this.entity.assemble();
     }

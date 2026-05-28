@@ -4,7 +4,6 @@ import io.p2vman.neoperipheral.component.HubLinkComponent;
 import io.p2vman.neoperipheral.component.NfcCardComponent;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.StreamCodec;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;

@@ -43,5 +43,11 @@ public class SynaxisIntegration {
                 SynaxisBlockEntities.JET.get(),
                 (b, d) -> ((IExternalPeripheralHolder) b).getPeripheral(d)
         );
+
+        event.registerBlockEntity(
+                PeripheralCapability.get(),
+                SynaxisBlockEntities.ANCHOR.get(),
+                (b, d) -> ((IExternalPeripheralHolder) b).getPeripheral(d)
+        );
     }
 }

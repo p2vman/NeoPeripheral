@@ -10,7 +10,6 @@ import net.neoforged.fml.config.ModConfig;
 import org.slf4j.Logger;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;

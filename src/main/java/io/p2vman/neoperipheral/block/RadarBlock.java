@@ -1,7 +1,6 @@
 package io.p2vman.neoperipheral.block;
 
 import io.p2vman.neoperipheral.ModRegistry;
-import io.p2vman.neoperipheral.block.entity.RadarBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;

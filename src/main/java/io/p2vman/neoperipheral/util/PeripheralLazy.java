@@ -1,7 +1,6 @@
 package io.p2vman.neoperipheral.util;
 
 import dan200.computercraft.api.peripheral.IPeripheral;
-import io.p2vman.neoperipheral.IPrefSource;
 import net.minecraft.core.Direction;
 import org.jetbrains.annotations.Nullable;
 

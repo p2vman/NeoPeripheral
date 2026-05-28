@@ -14,7 +14,7 @@ public class KineticResistorPeripheral implements IPeripheral {
 
     @Override
     public String getType() {
-        return "kinetic_resistor";
+        return "synaxis_kinetic_resistor";
     }
 
     @Override
