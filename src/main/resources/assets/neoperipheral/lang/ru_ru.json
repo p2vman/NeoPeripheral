@@ -21,10 +21,6 @@
   "hover.neoperipheral.nfc_reader": "Shift для подробностей",
   "full_hover.neoperipheral.nfc_reader": "Позволяет читать NFC карту.",
 
-  "block.neoperipheral.crypto": "Крипто блок",
-  "hover.neoperipheral.crypto": "Shift для подробностей",
-  "full_hover.neoperipheral.crypto": "Позволяет фармить ауру на сервере",
-
   "block.neoperipheral.entity_radar": "Детектор сущностей",
   "hover.neoperipheral.entity_radar": "Shift для подробностей",
   "full_hover.neoperipheral.entity_radar": "Детектор сущностей, может сканировать игрков и мобов в установленном радиусе.",

@@ -21,10 +21,6 @@
   "hover.neoperipheral.nfc_reader": "Press Shift for details",
   "full_hover.neoperipheral.nfc_reader": "Allows reading NFC cards.",
 
-  "block.neoperipheral.crypto": "Crypto Block",
-  "hover.neoperipheral.crypto": "Press Shift for details",
-  "full_hover.neoperipheral.crypto": "Allows farming aura on the server.",
-
   "block.neoperipheral.entity_radar": "Entity Detector",
   "hover.neoperipheral.entity_radar": "Press Shift for details",
   "full_hover.neoperipheral.entity_radar": "An entity detector that can scan for players and mobs within a set radius.",

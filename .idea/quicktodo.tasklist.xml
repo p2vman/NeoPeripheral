@@ -2,8 +2,8 @@
 <project version="4">
   <component name="com.oleksiy.quicktodo.TaskService">
     <tasks>
-      <task id="dab610c3-bd32-4a25-a07c-e24d3fbf97db" text="реализовать crypto переферию и модуль" level="1" priority="MEDIUM" createdAt="1779656028234" lastModified="1779656028233">
-        <option name="priorityEnum" value="MEDIUM" />
+      <task id="4dd16d10-6d20-4e1c-b822-2b5ba3c5624f" text="Перебороть лень" priority="HIGH" createdAt="1780497148839" lastModified="1780497166500">
+        <option name="priorityEnum" value="HIGH" />
       </task>
       <task id="b3130990-9f94-47c5-9493-75769eb5ca2a" text="реализовать luajit/wasm compute модуль" priority="LOW" createdAt="1779655698676" lastModified="1779656116475">
         <option name="priorityEnum" value="LOW" />
@@ -21,6 +21,8 @@
     <expandedTaskIds>
       <id value="6211b26f-3228-4c85-be77-c1e3172b2531" />
       <id value="dab610c3-bd32-4a25-a07c-e24d3fbf97db" />
+      <id value="4efadf6f-fc0c-4069-94c3-3acf2786f1b1" />
+      <id value="4dd16d10-6d20-4e1c-b822-2b5ba3c5624f" />
     </expandedTaskIds>
   </component>
 </project>
