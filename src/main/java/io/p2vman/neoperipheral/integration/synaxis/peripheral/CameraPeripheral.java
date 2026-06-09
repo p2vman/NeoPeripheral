@@ -26,42 +26,42 @@ public class CameraPeripheral implements IPeripheral {
     }
 
     @LuaFunction(mainThread = true)
-    public double getPitch() {
+    public final double getPitch() {
         return this.entity.localPitch();
     }
 
     @LuaFunction(mainThread = true)
-    public double getYaw() {
+    public final double getYaw() {
         return this.entity.localYaw();
     }
 
     @LuaFunction(mainThread = true)
-    public double getDistance() {
+    public final double getDistance() {
         return this.entity.latestDistance();
     }
 
     @LuaFunction(mainThread = true)
-    public boolean isRayEnabled() {
+    public final boolean isRayEnabled() {
         return this.entity.rayEnabled();
     }
 
     @LuaFunction(mainThread = true)
-    public void setRayEnabled(final boolean enabled) {
+    public final void setRayEnabled(final boolean enabled) {
         ((CameraBlockEntityAccessor) entity).setRayEnabled(enabled);
     }
 
     @LuaFunction(mainThread = true)
-    public double rayRange() {
+    public final double rayRange() {
         return this.entity.rayRange();
     }
 
     @LuaFunction(mainThread = true)
-    public void setRayRange(final double range) {
+    public final void setRayRange(final double range) {
         ((CameraBlockEntityAccessor) entity).setRayRange(range);
     }
 
     @LuaFunction(mainThread = true)
-    public Table collect() {
+    public final Table collect() {
         var data = new Table();
         data.put("distance", this.getDistance());
         data.put("pitch", this.getPitch());

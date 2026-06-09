@@ -203,4 +203,14 @@ public class SableEnginePeripheral extends BasePeripheral implements IPeripheral
     public ObjectList<IComputerAccess> getAttachedComputers() {
         return computers;
     }
+
+    @LuaFunction(mainThread = true)
+    public final String getLabel() {
+        return source.getLabel();
+    }
+
+    @LuaFunction(mainThread = true)
+    public final void setLabel(String label) {
+        source.setLabel(label);
+    }
 }

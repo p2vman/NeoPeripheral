@@ -27,37 +27,37 @@ public class AnchorPeripheral implements IPeripheral {
     }
 
     @LuaFunction
-    public void setAirResistance(final double airResistance) {
+    public final void setAirResistance(final double airResistance) {
         ((AnchorBlockEntityAccessor) entity).setAirResistance(airResistance);
     }
 
     @LuaFunction(mainThread = true)
-    public double getAirResistance() {
+    public final double getAirResistance() {
         return this.entity.airResistance();
     }
 
     @LuaFunction(mainThread = true)
-    public void setExtraGravity(final double extraGravity) {
+    public final void setExtraGravity(final double extraGravity) {
         ((AnchorBlockEntityAccessor) entity).setExtraGravity(extraGravity);
     }
 
     @LuaFunction(mainThread = true)
-    public double getExtraGravity() {
+    public final double getExtraGravity() {
         return this.entity.extraGravity();
     }
 
     @LuaFunction(mainThread = true)
-    public void setRotationalResistance(final double rotationalResistance) {
+    public final void setRotationalResistance(final double rotationalResistance) {
         ((AnchorBlockEntityAccessor) entity).setRotationalResistance(rotationalResistance);
     }
 
     @LuaFunction(mainThread = true)
-    public double getRotationalResistance() {
+    public final double getRotationalResistance() {
         return this.entity.rotationalResistance();
     }
 
     @LuaFunction(mainThread = true)
-    public Table collect() {
+    public final Table collect() {
         var tab = new Table();
         tab.put("air_resistance", this.getAirResistance());
         tab.put("extra_gravity", this.getExtraGravity());

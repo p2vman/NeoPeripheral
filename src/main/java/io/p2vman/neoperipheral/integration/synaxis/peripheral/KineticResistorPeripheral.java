@@ -23,12 +23,12 @@ public class KineticResistorPeripheral implements IPeripheral {
     }
 
     @LuaFunction(mainThread = true)
-    public double getRatio() {
+    public final double getRatio() {
         return entity.ratio();
     }
 
     @LuaFunction(mainThread = true)
-    public void setRatio(double ratio) {
+    public final void setRatio(double ratio) {
         entity.setRatio(ratio);
     }
 }

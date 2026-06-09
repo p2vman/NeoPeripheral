@@ -1,5 +1,6 @@
 package io.p2vman.neoperipheral.peripheral;
 
+import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import io.p2vman.neoperipheral.IPrefSource;
 import io.p2vman.neoperipheral.ModComponents;
@@ -40,5 +41,15 @@ public class NfcReaderPeripheral extends BasePeripheral implements IPeripheralAt
 
             this.queueEvent("neo_nfc_read", this.source.getLabel(), data);
         }
+    }
+
+    @LuaFunction(mainThread = true)
+    public final String getLabel() {
+        return source.getLabel();
+    }
+
+    @LuaFunction(mainThread = true)
+    public final void setLabel(String label) {
+        source.setLabel(label);
     }
 }

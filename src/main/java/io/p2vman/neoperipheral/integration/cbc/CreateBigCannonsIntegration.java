@@ -9,7 +9,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import rbasamoyai.createbigcannons.index.CBCBlockEntities;
 
-@Integration(modid = "createbigcannons")
+@Integration(modid = "createbigcannons", depends = "create")
 public class CreateBigCannonsIntegration {
     public CreateBigCannonsIntegration(IEventBus modBus) {
         modBus.addListener(CreateBigCannonsIntegration::registerCapabilities);

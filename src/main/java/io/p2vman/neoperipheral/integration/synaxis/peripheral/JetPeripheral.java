@@ -18,37 +18,37 @@ public class JetPeripheral implements IPeripheral {
     }
 
     @LuaFunction(mainThread = true)
-    public void setTrust(double trust) {
+    public final void setTrust(double trust) {
         this.entity.setThrust(trust);
     }
 
     @LuaFunction(mainThread = true)
-    public double getTrust() {
+    public final double getTrust() {
         return this.entity.thrust();
     }
 
     @LuaFunction(mainThread = true)
-    public void setHorizontalAngle(double horizontalAngle) {
+    public final void setHorizontalAngle(double horizontalAngle) {
         this.entity.setHorizontalAngle(horizontalAngle);
     }
 
     @LuaFunction(mainThread = true)
-    public double getHorizontalAngle() {
+    public final double getHorizontalAngle() {
         return this.entity.horizontalAngle();
     }
 
     @LuaFunction(mainThread = true)
-    public void setVerticalAngle(double verticalAngle) {
+    public final void setVerticalAngle(double verticalAngle) {
         this.entity.setVerticalAngle(verticalAngle);
     }
 
     @LuaFunction(mainThread = true)
-    public double getVerticalAngle() {
+    public final double getVerticalAngle() {
         return this.entity.verticalAngle();
     }
 
     @LuaFunction(mainThread = true)
-    public Table collect() {
+    public final Table collect() {
         var tab = new Table();
         tab.put("thrust", this.entity.thrust());
         tab.put("horizontalAngle", this.entity.horizontalAngle());

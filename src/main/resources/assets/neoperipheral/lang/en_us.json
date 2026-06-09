@@ -9,10 +9,6 @@
   "hover.neoperipheral.creative_radar_block": "Press Shift for details",
   "full_hover.neoperipheral.creative_radar_block": "An advanced radar that can detect sub_level constructions within a set radius. It has no limitations.",
 
-  "block.neoperipheral.socket": "Peripheral Socket",
-  "hover.neoperipheral.socket": "Press Shift for details",
-  "full_hover.neoperipheral.socket": "A peripheral socket that can hold up to 4 peripherals.",
-
   "block.neoperipheral.nfc_master": "NFC Master",
   "hover.neoperipheral.nfc_master": "Press Shift for details",
   "full_hover.neoperipheral.nfc_master": "Allows reading, writing, and locking NFC cards.",
@@ -37,8 +33,8 @@
   "hover.neoperipheral.triangle_radar": "Press Shift for details",
   "full_hover.neoperipheral.triangle_radar": "-Dneoperipheral-debug=true for enable",
 
-  "item.neoperipheral.radar_module": "Radar Module",
-  "item.neoperipheral.crypto_module": "Crypto Module",
-  "item.neoperipheral.creative_radar_module": "Creative Radar Module",
-  "item.neoperipheral.nfc_card": "NFC Card"
+  "item.neoperipheral.nfc_card": "NFC Card",
+
+  "upgrade.neoperipheral.radar_upgrade": "Radar",
+  "upgrade.neoperipheral.creative_radar_upgrade": "Creative Radar"
 }

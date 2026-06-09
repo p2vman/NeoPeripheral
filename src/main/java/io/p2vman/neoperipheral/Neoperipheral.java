@@ -26,6 +26,8 @@ public class Neoperipheral {
         ModRegistry.ITEMS.register(bus);
         ModRegistry.BLOCK_ENTITY_TYPES.register(bus);
         ModRegistry.CREATIVE_MODE_TABS.register(bus);
+        ModRegistry.POCKET_UPGRADES.register(bus);
+        ModRegistry.TURTLE_UPGRADES.register(bus);
         ModComponents.REGISTRAR.register(bus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

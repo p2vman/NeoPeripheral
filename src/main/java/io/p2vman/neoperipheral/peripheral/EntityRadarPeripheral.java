@@ -27,7 +27,17 @@ public class EntityRadarPeripheral extends BasePeripheral {
     }
 
     @LuaFunction(mainThread = true)
-    public TableArray scanForEntities(IArguments arguments) throws LuaException {
+    public final String getLabel() {
+        return source.getLabel();
+    }
+
+    @LuaFunction(mainThread = true)
+    public final void setLabel(String label) {
+        source.setLabel(label);
+    }
+
+    @LuaFunction(mainThread = true)
+    public final TableArray scanForEntities(IArguments arguments) throws LuaException {
         var array = new TableArray();
         var increment = 1;
         var radius = Math.max(16, Math.min(Config._ENTITY_RADAR_RANGE_LIMIT, arguments.optInt(0, 16)));
@@ -56,7 +66,7 @@ public class EntityRadarPeripheral extends BasePeripheral {
     }
 
     @LuaFunction(mainThread = true)
-    public TableArray scanForPlayers(IArguments arguments) throws LuaException {
+    public final TableArray scanForPlayers(IArguments arguments) throws LuaException {
         var array = new TableArray();
         var increment = 1;
         var radius = Math.max(16, Math.min(Config._PLAYER_RADAR_RANGE_LIMIT, arguments.optInt(0, 16)));

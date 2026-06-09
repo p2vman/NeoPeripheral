@@ -95,4 +95,14 @@ public class TriangleRadarPeripheral extends BasePeripheral implements IPeripher
                        int packedOverlay) {
 
     }
+
+    @LuaFunction(mainThread = true)
+    public final String getLabel() {
+        return source.getLabel();
+    }
+
+    @LuaFunction(mainThread = true)
+    public final void setLabel(String label) {
+        source.setLabel(label);
+    }
 }

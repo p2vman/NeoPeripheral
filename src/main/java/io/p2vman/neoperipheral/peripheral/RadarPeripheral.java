@@ -29,12 +29,12 @@ public class RadarPeripheral extends BasePeripheral {
     }
 
     @LuaFunction(value = {"isCreative", "creative"})
-    public MethodResult isCreative() throws LuaException {
+    public final MethodResult isCreative() throws LuaException {
         return MethodResult.of(creative);
     }
 
     @LuaFunction(value = {"scanForSubLevels", "ScanForSubLevels"}, mainThread = true)
-    public MethodResult scanForSubLevels(IArguments arguments) throws LuaException {
+    public final MethodResult scanForSubLevels(IArguments arguments) throws LuaException {
         var radius = this.creative ? arguments.optInt(0, 16) : Math.max(16, Math.min(Config._RADAR_RANGE_LIMIT, arguments.optInt(0, Config._RADAR_DEFAULT_RANGE)));
         var sub_levels = new TableArray();
         var increment = 1;
@@ -82,5 +82,13 @@ public class RadarPeripheral extends BasePeripheral {
         return MethodResult.of(sub_levels);
     }
 
+    @LuaFunction(mainThread = true)
+    public final String getLabel() {
+        return source.getLabel();
+    }
 
+    @LuaFunction(mainThread = true)
+    public final void setLabel(String label) {
+        source.setLabel(label);
+    }
 }

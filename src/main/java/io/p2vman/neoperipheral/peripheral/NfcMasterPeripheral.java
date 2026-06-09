@@ -32,17 +32,17 @@ public class NfcMasterPeripheral extends BasePeripheral implements IPeripheralAt
     }
 
     @LuaFunction(mainThread = true, value = {"hashCard", "HashCard"})
-    public boolean hashCard() {
+    public final boolean hashCard() {
         return !entity.isEmpty();
     }
 
     @LuaFunction(mainThread = true)
-    public String getLabel() {
+    public final String getLabel() {
         return entity.getLabel();
     }
 
     @LuaFunction(mainThread = true)
-    public void setLabel(String label) {
+    public final void setLabel(String label) {
         entity.setLabel(label);
     }
 
@@ -66,7 +66,7 @@ public class NfcMasterPeripheral extends BasePeripheral implements IPeripheralAt
     }
 
     @LuaFunction(mainThread = true, value = {"Flash", "flash"})
-    public boolean flash(IArguments args) throws LuaException {
+    public final boolean flash(IArguments args) throws LuaException {
         if (entity.isEmpty()) return false;
         var card = entity.getCard();
 
@@ -148,7 +148,7 @@ public class NfcMasterPeripheral extends BasePeripheral implements IPeripheralAt
     }
 
     @LuaFunction(mainThread = true, value = {"Read", "read"})
-    public MethodResult read() throws LuaException {
+    public final MethodResult read() throws LuaException {
         if (entity.isEmpty()) return MethodResult.of(false);
         var card = entity.getCard();
         var data = card.get(ModComponents.NFC_DATA);

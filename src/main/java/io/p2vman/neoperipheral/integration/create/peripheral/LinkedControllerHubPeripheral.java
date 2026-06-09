@@ -39,12 +39,12 @@ public class LinkedControllerHubPeripheral extends BasePeripheral implements IPe
     }
 
     @LuaFunction
-    public boolean getButton(String key) {
+    public final boolean getButton(String key) {
         return prees.getBoolean(key);
     }
 
     @LuaFunction
-    public void getButtons(LuaTable<String, Boolean> table) {
+    public final void getButtons(LuaTable<String, Boolean> table) {
         table.replaceAll((s, v) -> prees.getBoolean(s));
     }
 
@@ -55,7 +55,7 @@ public class LinkedControllerHubPeripheral extends BasePeripheral implements IPe
     }
 
     @LuaFunction
-    public String[] getKeys() {
+    public final String[] getKeys() {
         return KEY_TO_CHANNEL;
     }
 }

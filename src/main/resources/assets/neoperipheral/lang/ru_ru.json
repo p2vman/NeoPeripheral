@@ -9,10 +9,6 @@
   "hover.neoperipheral.creative_radar_block": "Shift для подробностей",
   "full_hover.neoperipheral.creative_radar_block": "Улучшенный радар, который может обнаруживать sub_level конструкции в установленном радиусе. Он не имеет ограничений.",
 
-  "block.neoperipheral.socket": "Сокет для переферий",
-  "hover.neoperipheral.socket": "Shift для подробностей",
-  "full_hover.neoperipheral.socket": "Сокет для переферий, может вмещать в себя максимум 4 переферии.",
-
   "block.neoperipheral.nfc_master": "NFC Мастер",
   "hover.neoperipheral.nfc_master": "Shift для подробностей",
   "full_hover.neoperipheral.nfc_master": "Позволяет чатать, записывать и блокировать NFC карту.",
@@ -37,8 +33,5 @@
   "hover.neoperipheral.triangle_radar": "Shift для подробностей",
   "full_hover.neoperipheral.triangle_radar": "-Dneoperipheral-debug=true для включения",
 
-  "item.neoperipheral.radar_module": "Модуль радара",
-  "item.neoperipheral.crypto_module": "Крипто модуль",
-  "item.neoperipheral.creative_radar_module": "Креативный модуль радара",
   "item.neoperipheral.nfc_card": "NFC Карта"
 }
