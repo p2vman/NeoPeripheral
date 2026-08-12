@@ -1,9 +1,10 @@
-package io.p2vman.neoperipheral.block.entity;
+package io.p2vman.neoperipheral.integration.sable.block.entity;
 
 import dan200.computercraft.api.peripheral.IPeripheral;
 import io.p2vman.neoperipheral.IPrefSource;
-import io.p2vman.neoperipheral.ModRegistry;
-import io.p2vman.neoperipheral.peripheral.RadarPeripheral;
+import io.p2vman.neoperipheral.block.entity.BasePeripheralBlockEntity;
+import io.p2vman.neoperipheral.integration.sable.SableIntegration;
+import io.p2vman.neoperipheral.integration.sable.peripheral.RadarPeripheral;
 import io.p2vman.neoperipheral.util.Lazy;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,7 +15,7 @@ import javax.annotation.Nullable;
 public class RadarBlockEntity extends BasePeripheralBlockEntity implements IPrefSource.IPrefHolder<RadarPeripheral> {
     private final Lazy<RadarPeripheral> peripheral;
     public RadarBlockEntity(BlockPos pos, BlockState blockState) {
-        super(ModRegistry.RADAR_BLOCK_ENTITY.get(), pos, blockState);
+        super(SableIntegration.RADAR_BLOCK_ENTITY.get(), pos, blockState);
         this.peripheral = Lazy.of(() -> new RadarPeripheral(this, false));
     }
 

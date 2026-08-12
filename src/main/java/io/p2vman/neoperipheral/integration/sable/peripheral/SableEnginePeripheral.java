@@ -1,4 +1,4 @@
-package io.p2vman.neoperipheral.peripheral;
+package io.p2vman.neoperipheral.integration.sable.peripheral;
 
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.LuaFunction;
@@ -11,6 +11,8 @@ import dev.ryanhcode.sable.sublevel.ServerSubLevel;
 import dev.ryanhcode.sable.sublevel.SubLevel;
 import io.p2vman.neoperipheral.Config;
 import io.p2vman.neoperipheral.IPrefSource;
+import io.p2vman.neoperipheral.peripheral.BasePeripheral;
+import io.p2vman.neoperipheral.peripheral.IPeripheralAttacher;
 import io.p2vman.neoperipheral.util.CallLimiter;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleOpenHashMap;

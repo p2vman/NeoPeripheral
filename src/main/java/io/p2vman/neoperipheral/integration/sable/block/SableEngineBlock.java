@@ -1,7 +1,7 @@
-package io.p2vman.neoperipheral.block;
+package io.p2vman.neoperipheral.integration.sable.block;
 
-import io.p2vman.neoperipheral.ModRegistry;
-import io.p2vman.neoperipheral.block.entity.SableEngineBlockEntity;
+import io.p2vman.neoperipheral.integration.sable.SableIntegration;
+import io.p2vman.neoperipheral.integration.sable.block.entity.SableEngineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -23,7 +23,7 @@ public class SableEngineBlock extends Block implements EntityBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return ModRegistry.SABLE_ENGINE_BLOCK_ENTITY.get().create(blockPos, blockState);
+        return SableIntegration.SABLE_ENGINE_BLOCK_ENTITY.get().create(blockPos, blockState);
     }
 
     @Override

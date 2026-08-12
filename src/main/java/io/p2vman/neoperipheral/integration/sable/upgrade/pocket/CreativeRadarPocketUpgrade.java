@@ -1,12 +1,12 @@
-package io.p2vman.neoperipheral.upgrade.pocket;
+package io.p2vman.neoperipheral.integration.sable.upgrade.pocket;
 
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.api.pocket.AbstractPocketUpgrade;
 import dan200.computercraft.api.pocket.IPocketAccess;
 import dan200.computercraft.api.upgrades.UpgradeType;
-import io.p2vman.neoperipheral.ModRegistry;
 import io.p2vman.neoperipheral.Neoperipheral;
-import io.p2vman.neoperipheral.peripheral.RadarPeripheral;
+import io.p2vman.neoperipheral.integration.sable.SableIntegration;
+import io.p2vman.neoperipheral.integration.sable.peripheral.RadarPeripheral;
 import io.p2vman.neoperipheral.util.AccessWrapper;
 import net.minecraft.world.item.ItemStack;
 
@@ -21,7 +21,7 @@ public class CreativeRadarPocketUpgrade extends AbstractPocketUpgrade {
 
     @Override
     public UpgradeType<? extends CreativeRadarPocketUpgrade> getType() {
-        return ModRegistry.CREATIVE_RADAR_UPGRADE_TYPE.get();
+        return SableIntegration.CREATIVE_RADAR_UPGRADE_TYPE.get();
     }
 
     @Override

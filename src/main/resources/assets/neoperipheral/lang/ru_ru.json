@@ -25,13 +25,16 @@
   "hover.neoperipheral.sable_engine": "Shift для подробностей",
   "full_hover.neoperipheral.sable_engine": "Двигатель, который опзволяет двигать sub_level конструкции. Он может двигать конструкцию в любом направлении, а также вращать её.",
 
-  "block.neoperipheral.linked_controller_hab": "Хаб контроллера",
-  "hover.neoperipheral.linked_controller_hab": "Shift для подробностей",
-  "full_hover.neoperipheral.linked_controller_hab": "Хаб контроллера, можно подключить create констроллер и получать информацию о нажатых кнопках.",
+  "block.neoperipheral.linked_controller_hub": "Хаб контроллера",
+  "hover.neoperipheral.linked_controller_hub": "Shift для подробностей",
+  "full_hover.neoperipheral.linked_controller_hub": "Хаб контроллера, можно подключить create констроллер и получать информацию о нажатых кнопках.",
 
-  "block.neoperipheral.triangle_radar": "Реалистичный радар",
-  "hover.neoperipheral.triangle_radar": "Shift для подробностей",
-  "full_hover.neoperipheral.triangle_radar": "-Dneoperipheral-debug=true для включения",
+  "block.neoperipheral.autocrafter": "Автокрафтер",
+  "hover.neoperipheral.autocrafter": "Shift для подробностей",
+  "full_hover.neoperipheral.autocrafter": "Здесь пусто.",
 
-  "item.neoperipheral.nfc_card": "NFC Карта"
+  "item.neoperipheral.nfc_card": "NFC Карта",
+
+  "upgrade.neoperipheral.radar_upgrade": "Радар",
+  "upgrade.neoperipheral.creative_radar_upgrade": "Креативный радар"
 }

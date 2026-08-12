@@ -1,4 +1,4 @@
-package io.p2vman.neoperipheral.peripheral;
+package io.p2vman.neoperipheral.integration.sable.peripheral;
 
 import dan200.computercraft.api.lua.IArguments;
 import dan200.computercraft.api.lua.LuaException;
@@ -12,6 +12,7 @@ import io.p2vman.neoperipheral.IPrefSource;
 import io.p2vman.neoperipheral.lua.Table;
 import io.p2vman.neoperipheral.lua.TableArray;
 import io.p2vman.neoperipheral.lua.UUIDTable;
+import io.p2vman.neoperipheral.peripheral.BasePeripheral;
 
 import java.util.Random;
 

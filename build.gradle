@@ -168,6 +168,9 @@ dependencies {
     //for tests
     implementation "curse.maven:nbtedit-reborn-678133:6125444"
     implementation("com.cake.autoload:autoload-neoforge-1.21.1:1.+")
+
+    compileOnly('org.projectlombok:lombok:1.18.30')
+    annotationProcessor('org.projectlombok:lombok:1.18.30')
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

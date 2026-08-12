@@ -8,15 +8,13 @@ import dan200.computercraft.api.upgrades.UpgradeBase;
 import dan200.computercraft.api.upgrades.UpgradeData;
 import dan200.computercraft.api.upgrades.UpgradeType;
 import dan200.computercraft.shared.util.DataComponentUtil;
-import io.p2vman.neoperipheral.block.*;
-import io.p2vman.neoperipheral.block.entity.*;
-import io.p2vman.neoperipheral.item.AdvancedServerItem;
+import io.p2vman.neoperipheral.block.EntityRadarBlock;
+import io.p2vman.neoperipheral.block.NfcMasterBlock;
+import io.p2vman.neoperipheral.block.NfcReaderBlock;
+import io.p2vman.neoperipheral.block.entity.EntityRadarBlockEntity;
+import io.p2vman.neoperipheral.block.entity.NfcMasterBlockEntity;
+import io.p2vman.neoperipheral.block.entity.NfcReaderBlockEntity;
 import io.p2vman.neoperipheral.item.NfcCardItem;
-import io.p2vman.neoperipheral.item.ServerItem;
-import io.p2vman.neoperipheral.upgrade.pocket.CreativeRadarPocketUpgrade;
-import io.p2vman.neoperipheral.upgrade.pocket.RadarPocketUpgrade;
-import io.p2vman.neoperipheral.upgrade.turtle.CreativeRadarTurtleUpgrade;
-import io.p2vman.neoperipheral.upgrade.turtle.RadarTurtleUpgrade;
 import io.p2vman.neoperipheral.util.ItemsDeferredRegister;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -53,12 +51,6 @@ public class ModRegistry {
     public static final DeferredRegister<UpgradeType<? extends ITurtleUpgrade>> TURTLE_UPGRADES =
             DeferredRegister.create(ITurtleUpgrade.typeRegistry(), Neoperipheral.MODID);
 
-    public static final DeferredBlock<RadarBlock> RADAR_BLOCK =
-            BLOCKS.register("radar_block", () -> new RadarBlock(BlockBehaviour.Properties.of()));
-
-    public static final DeferredBlock<CreativeRadarBlock> CREATIVE_RADAR_BLOCK =
-            BLOCKS.register("creative_radar_block", () -> new CreativeRadarBlock(BlockBehaviour.Properties.of()));
-
     public static final DeferredBlock<NfcMasterBlock> NFC_MASTER_BLOCK =
             BLOCKS.register("nfc_master", () -> new NfcMasterBlock(BlockBehaviour.Properties.of()));
 
@@ -68,49 +60,12 @@ public class ModRegistry {
     public static final DeferredBlock<EntityRadarBlock> ENTITY_RADAR_BLOCK =
             BLOCKS.register("entity_radar",  () -> new EntityRadarBlock(BlockBehaviour.Properties.of()));
 
-    public static final DeferredBlock<SableEngineBlock> SABLE_ENGINE_BLOCK =
-            BLOCKS.register("sable_engine", () -> new SableEngineBlock(BlockBehaviour.Properties.of()));
-
-    public static final DeferredBlock<TriangleRadarBlock> TRIANGLE_RADAR_BLOCK =
-            BLOCKS.register("triangle_radar", () -> new TriangleRadarBlock(BlockBehaviour.Properties.of()));
-
-    public static final DeferredBlock<RackBlock> RACK_BLOCK =
-            BLOCKS.register("rack", () -> new RackBlock(BlockBehaviour.Properties.of()));
-
-    public static final DeferredItem<BlockItem> RADAR_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(RADAR_BLOCK);
-    public static final DeferredItem<BlockItem> CREATIVE_RADAR_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(CREATIVE_RADAR_BLOCK);
     public static final DeferredItem<BlockItem> NFC_MASTER_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(NFC_MASTER_BLOCK);
     public static final DeferredItem<BlockItem> NFC_READER_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(NFC_READER_BLOCK);
     public static final DeferredItem<BlockItem> ENTITY_RADAR_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(ENTITY_RADAR_BLOCK);
-    public static final DeferredItem<BlockItem> SABLE_ENGINE_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(SABLE_ENGINE_BLOCK);
-    public static final DeferredItem<BlockItem> TRIANGLE_RADAR_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(TRIANGLE_RADAR_BLOCK);
-    public static final DeferredItem<BlockItem> RACK_BLOCK_ITEM = ITEMS.registerSimpleHoverBlockItem(RACK_BLOCK);
 
     public static final DeferredItem<NfcCardItem> NFC_CARD_ITEM =
             ITEMS.registerItem("nfc_card", NfcCardItem::new, new Item.Properties().stacksTo(1));
-
-    public static final DeferredItem<ServerItem> SERVER_ITEM =
-            ITEMS.registerItem("server", ServerItem::new);
-    public static final DeferredItem<AdvancedServerItem> ADVANCED_SERVER_ITEM =
-            ITEMS.registerItem("advanced_server", AdvancedServerItem::new);
-
-    public static final Supplier<BlockEntityType<RadarBlockEntity>> RADAR_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
-            "radar_block_entity",
-            () -> new BlockEntityType<>(
-                    RadarBlockEntity::new,
-                    Set.of(RADAR_BLOCK.get()),
-                    null
-            )
-    );
-
-    public static final Supplier<BlockEntityType<CreativeRadarBlockEntity>> CREATIVE_RADAR_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
-            "creative_radar_block_entity",
-            () -> new BlockEntityType<>(
-                    CreativeRadarBlockEntity::new,
-                    Set.of(CREATIVE_RADAR_BLOCK.get()),
-                    null
-            )
-    );
 
     public static final Supplier<BlockEntityType<NfcMasterBlockEntity>> NFC_MASTER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
             "nfc_master",
@@ -139,55 +94,16 @@ public class ModRegistry {
             )
     );
 
-    public static final Supplier<BlockEntityType<SableEngineBlockEntity>> SABLE_ENGINE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
-            "sable_engine",
-            () -> new BlockEntityType<>(
-                    SableEngineBlockEntity::new,
-                    Set.of(SABLE_ENGINE_BLOCK.get()),
-                    null
-            )
-    );
 
-    public static final Supplier<BlockEntityType<TriangleRadarBlockEntity>> TRIANGLE_RADAR_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
-            "triangle_radar",
-            () -> new BlockEntityType<>(
-                    TriangleRadarBlockEntity::new,
-                    Set.of(TRIANGLE_RADAR_BLOCK.get()),
-                    null
-            )
-    );
-
-    public static final Supplier<BlockEntityType<RackBlockEntity>> RACK_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
-            "rack",
-            () -> new BlockEntityType<>(
-                    RackBlockEntity::new,
-                    Set.of(RACK_BLOCK.get()),
-                    null
-            )
-    );
-
-    public static final DeferredHolder<UpgradeType<? extends IPocketUpgrade>, UpgradeType<RadarPocketUpgrade>> RADAR_UPGRADE_TYPE =
-            POCKET_UPGRADES.register("radar", () -> RadarPocketUpgrade.TYPE);
-
-    public static final DeferredHolder<UpgradeType<? extends IPocketUpgrade>, UpgradeType<CreativeRadarPocketUpgrade>> CREATIVE_RADAR_UPGRADE_TYPE =
-            POCKET_UPGRADES.register("creative_radar", () -> CreativeRadarPocketUpgrade.TYPE);
-
-    public static final DeferredHolder<UpgradeType<? extends ITurtleUpgrade>, UpgradeType<RadarTurtleUpgrade>> RADAR_TURTLE_UPGRADE_TYPE =
-            TURTLE_UPGRADES.register("radar", () -> RadarTurtleUpgrade.TYPE);
-
-    public static final DeferredHolder<UpgradeType<? extends ITurtleUpgrade>, UpgradeType<CreativeRadarTurtleUpgrade>> CREATIVE_RADAR_TURTLE_UPGRADE_TYPE =
-            TURTLE_UPGRADES.register("creative_radar", () -> CreativeRadarTurtleUpgrade.TYPE);
-
-    private static boolean isOurUpgrade(Holder.Reference<? extends UpgradeBase> upgrade) {
+    public static boolean isOurUpgrade(Holder.Reference<? extends UpgradeBase> upgrade) {
         return upgrade.key().location().getNamespace().equals(Neoperipheral.MODID);
     }
 
     public static final Supplier<CreativeModeTab> TAB = CREATIVE_MODE_TABS.register("tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup." + Neoperipheral.MODID + ".tab"))
-            .icon(() -> new ItemStack(RADAR_BLOCK_ITEM.asItem()))
+            .icon(() -> new ItemStack(ENTITY_RADAR_BLOCK_ITEM.asItem()))
             .displayItems((params, output) -> {
                 ITEMS.getEntries().stream().map(DeferredHolder::get).forEach(output::accept);
-
 
                 Stream<ItemStack> filteredItemStacks = params.holders()
                         .lookupOrThrow(IPocketUpgrade.REGISTRY)
@@ -228,15 +144,8 @@ public class ModRegistry {
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         var cap = PeripheralCapability.get();
-        event.registerBlockEntity(cap, RADAR_BLOCK_ENTITY.get(), RadarBlockEntity::getPeripheral);
-        event.registerBlockEntity(cap, CREATIVE_RADAR_BLOCK_ENTITY.get(), CreativeRadarBlockEntity::getPeripheral);
         event.registerBlockEntity(cap, NFC_MASTER_BLOCK_ENTITY.get(), NfcMasterBlockEntity::getPeripheral);
         event.registerBlockEntity(cap, NFC_READER_BLOCK_ENTITY.get(), NfcReaderBlockEntity::getPeripheral);
         event.registerBlockEntity(cap, ENTITY_RADAR_BLOCK_ENTITY.get(), EntityRadarBlockEntity::getPeripheral);
-        event.registerBlockEntity(cap, RADAR_BLOCK_ENTITY.get(), RadarBlockEntity::getPeripheral);
-        if (Config._SABLE_ENGINE_ENABLED) event.registerBlockEntity(cap, SABLE_ENGINE_BLOCK_ENTITY.get(), SableEngineBlockEntity::getPeripheral);
-        if (Neoperipheral.debug) {
-            event.registerBlockEntity(cap, TRIANGLE_RADAR_BLOCK_ENTITY.get(), TriangleRadarBlockEntity::getPeripheral);
-        }
     }
 }

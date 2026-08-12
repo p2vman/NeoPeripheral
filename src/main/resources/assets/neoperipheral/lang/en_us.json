@@ -25,13 +25,13 @@
   "hover.neoperipheral.sable_engine": "Press Shift for details",
   "full_hover.neoperipheral.sable_engine": "An engine that allows moving sub_level constructions. It can move the construction in any direction, as well as rotate it.",
 
-  "block.neoperipheral.linked_controller_hab": "Controller Hub",
-  "hover.neoperipheral.linked_controller_hab": "Press Shift for details",
-  "full_hover.neoperipheral.linked_controller_hab": "Controller hub, allows connecting a Create linked controller to receive information about pressed buttons.",
+  "block.neoperipheral.linked_controller_hub": "Controller Hub",
+  "hover.neoperipheral.linked_controller_hub": "Press Shift for details",
+  "full_hover.neoperipheral.linked_controller_hub": "Controller hub, allows connecting a Create linked controller to receive information about pressed buttons.",
 
-  "block.neoperipheral.triangle_radar": "Realistic Radar",
-  "hover.neoperipheral.triangle_radar": "Press Shift for details",
-  "full_hover.neoperipheral.triangle_radar": "-Dneoperipheral-debug=true for enable",
+  "block.neoperipheral.autocrafter": "Autocrafter",
+  "hover.neoperipheral.autocrafter": "Press Shift for details",
+  "full_hover.neoperipheral.autocrafter": "Computer-controlled autocrafter with inventory, recipe tables and configurable item output.",
 
   "item.neoperipheral.nfc_card": "NFC Card",
 

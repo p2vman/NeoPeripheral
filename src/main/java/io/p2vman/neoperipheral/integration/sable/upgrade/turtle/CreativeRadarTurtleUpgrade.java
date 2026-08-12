@@ -1,4 +1,4 @@
-package io.p2vman.neoperipheral.upgrade.turtle;
+package io.p2vman.neoperipheral.integration.sable.upgrade.turtle;
 
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.api.turtle.AbstractTurtleUpgrade;
@@ -6,9 +6,9 @@ import dan200.computercraft.api.turtle.ITurtleAccess;
 import dan200.computercraft.api.turtle.TurtleSide;
 import dan200.computercraft.api.turtle.TurtleUpgradeType;
 import dan200.computercraft.api.upgrades.UpgradeType;
-import io.p2vman.neoperipheral.ModRegistry;
 import io.p2vman.neoperipheral.Neoperipheral;
-import io.p2vman.neoperipheral.peripheral.RadarPeripheral;
+import io.p2vman.neoperipheral.integration.sable.SableIntegration;
+import io.p2vman.neoperipheral.integration.sable.peripheral.RadarPeripheral;
 import io.p2vman.neoperipheral.util.AccessWrapper;
 import net.minecraft.world.item.ItemStack;
 
@@ -24,7 +24,7 @@ public class CreativeRadarTurtleUpgrade extends AbstractTurtleUpgrade {
 
     @Override
     public UpgradeType<? extends CreativeRadarTurtleUpgrade> getType() {
-        return ModRegistry.CREATIVE_RADAR_TURTLE_UPGRADE_TYPE.get();
+        return SableIntegration.CREATIVE_RADAR_TURTLE_UPGRADE_TYPE.get();
     }
 
     @Override

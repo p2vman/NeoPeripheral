@@ -1,53 +1,59 @@
 package io.p2vman.neoperipheral.integration.synaxis;
 
 import com.verr1.synaxis.registry.SynaxisBlockEntities;
+import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.api.peripheral.PeripheralCapability;
 import io.p2vman.neoperipheral.integration.IExternalPeripheralHolder;
 import io.p2vman.neoperipheral.integration.Integration;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.capabilities.ICapabilityProvider;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
 @Integration(modid = "synaxis")
 public class SynaxisIntegration {
+    private static final ICapabilityProvider<BlockEntity, Direction, IPeripheral> base = (be, d) -> ((IExternalPeripheralHolder) be).getPeripheral(d);
     public SynaxisIntegration(IEventBus modBus) {
         modBus.addListener(SynaxisIntegration::registerCapabilities);
     }
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        var cap = PeripheralCapability.get();
         event.registerBlockEntity(
-                PeripheralCapability.get(),
+                cap,
                 SynaxisBlockEntities.KINETIC_RESISTOR.get(),
-                (b, d) -> ((IExternalPeripheralHolder) b).getPeripheral(d)
+                base
         );
 
         event.registerBlockEntity(
-                PeripheralCapability.get(),
+                cap,
                 SynaxisBlockEntities.DYNAMIC_REVOLUTE_MOTOR.get(),
-                (b, d) -> ((IExternalPeripheralHolder) b).getPeripheral(d)
+                base
         );
 
         event.registerBlockEntity(
-                PeripheralCapability.get(),
+                cap,
                 SynaxisBlockEntities.COMPACT_FLAP.get(),
-                (b, d) -> ((IExternalPeripheralHolder) b).getPeripheral(d)
+                base
         );
 
         event.registerBlockEntity(
-                PeripheralCapability.get(),
+                cap,
                 SynaxisBlockEntities.CAMERA.get(),
-                (b, d) -> ((IExternalPeripheralHolder) b).getPeripheral(d)
+                base
         );
 
         event.registerBlockEntity(
-                PeripheralCapability.get(),
+                cap,
                 SynaxisBlockEntities.JET.get(),
-                (b, d) -> ((IExternalPeripheralHolder) b).getPeripheral(d)
+                base
         );
 
         event.registerBlockEntity(
-                PeripheralCapability.get(),
+                cap,
                 SynaxisBlockEntities.ANCHOR.get(),
-                (b, d) -> ((IExternalPeripheralHolder) b).getPeripheral(d)
+                base
         );
     }
 }
